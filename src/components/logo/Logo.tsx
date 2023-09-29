@@ -13,25 +13,36 @@ export const Logo = () => {
 
 
 const StyledLogo = styled.a`
+	position: relative;
+
 	font-size: 34px;
 	letter-spacing: 5px;
-	color: #303030;
+	color: ${theme.colors.color};
 
+	overflow: hidden;
 	cursor: pointer;
 	transition: .2s;
 
 	span {
-		color: ${theme.colors.accent};
+		color: ${theme.colors.altColor};
+	}
+
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 3px;
+		position: absolute;
+		bottom: 0;
+		right: 100%;
+
+		background-color: ${theme.colors.color};
+		transition: .2s;
 	}
 
 	&:hover {
-		&:first-child {
-			color: ${theme.colors.accent};
-		}
-
-		span {
-			color: #303030;
-			transition: .2s;
+		&::before {
+			right: 0;
 		}
 	}
 `

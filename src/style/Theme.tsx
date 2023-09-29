@@ -3,11 +3,11 @@ export const theme = {
         primaryBgr: "#e01a4fff",
         secondaryBgr: "#f7f7f7",
         bodyBgr: "#292929",
-        // border: "#A39D9D",
         color: "#fffefe",
         altColor: "#292929",
 
-        accent:"#f9c22eff",
+        accent:"#ffdc7a",
+        secondaryAccent: "#f15946ff",
         // accentGradient: {
         //     from: "#13ADC7",
         //     middle: "#6978D1",

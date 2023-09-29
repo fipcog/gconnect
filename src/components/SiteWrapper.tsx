@@ -14,4 +14,6 @@ export const SiteWrapper = styled.div`
     padding: 15px;
 
     background-color: ${theme.colors.secondaryBgr};
+
+    overflow: hidden;
 `

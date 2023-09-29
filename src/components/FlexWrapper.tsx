@@ -2,13 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 type FlexWrapperType = {
-    direction?: string;
-    justify?: string;
-    align?: string;
-    wrap?: string;
-    gap?: string;
-    width?: string;
-    height?: string;
+    direction?: string
+    justify?: string
+    align?: string
+    wrap?: string
+    gap?: string
+    width?: string
+    height?: string
+    margin?: string
+    padding?: string
 }
 
 export const FlexWrapper = styled.div<FlexWrapperType>`
@@ -22,4 +24,7 @@ export const FlexWrapper = styled.div<FlexWrapperType>`
     width: 100%;
     height: ${props => props.height || "100%"};
     gap: ${props => props.gap || "inherit"};
+
+    padding: ${props => props.padding || "0"};
+    margin: ${props => props.margin || "0"};
 `
