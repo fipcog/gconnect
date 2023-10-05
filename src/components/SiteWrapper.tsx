@@ -8,7 +8,7 @@ export const SiteWrapper = styled.div`
 
     max-width: 1170px;
     width: 100%;
-    /* height: 100vh; */
+    min-height: 100vh;
 
     margin: 0 auto;
     padding: 15px;
