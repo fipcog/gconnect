@@ -7,7 +7,7 @@ const Main = styled.main`
     width: 100%;
     height: 100%;
 
-    padding-bottom: 25px;
+    padding-bottom: 50px;
     overflow: hidden;
 `
 

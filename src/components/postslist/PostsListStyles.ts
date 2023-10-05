@@ -6,10 +6,10 @@ const PostsList = styled.ul`
     flex-direction: column;
 
     width: 100%;
-    height: 150px;
+    /* height: 150px;
 
     overflow: hidden;
-    overflow-y: auto;
+    overflow-y: auto; */
 `
 
 export const S = {

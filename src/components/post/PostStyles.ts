@@ -5,13 +5,14 @@ const Post = styled.li`
     flex-direction: row;
     gap: 30px;
 
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 `
 
 const UserMessage = styled.p`
     padding-top: 15px;
 
     /* word-break: break-all; */
+    overflow: hidden;
 `
 
 export const S = {
