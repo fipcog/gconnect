@@ -1,6 +1,7 @@
 import  React  from 'react';
 import { FlexWrapper } from '../FlexWrapper';
 import styled from 'styled-components';
+import { theme } from '../../style/Theme';
 
 type PropTypes = {
     image: string
@@ -18,6 +19,10 @@ export const UserImage: React.FC<PropTypes> = (props) => {
 }       
 
 const StyledUserImage = styled.img`
+    width: 100%;
+
     object-fit: cover;
     border-radius: 50%;
+
+    background-color: ${theme.colors.accent};
 `

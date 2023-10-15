@@ -10,7 +10,8 @@ export const Button = styled.button`
 
     border: none;
     border-radius: 10px;
-    background: linear-gradient(175deg, rgba(224,26,79,1) 0%, rgba(241,89,70,1) 48%, rgba(249,194,46,1) 100%);
+    /* background: linear-gradient(175deg, rgba(224,26,79,1) 0%, rgba(241,89,70,1) 48%, rgba(249,194,46,1) 100%); */
+    background: ${theme.colors.primaryBgr};
 
     cursor: pointer;
     transition: .2s;

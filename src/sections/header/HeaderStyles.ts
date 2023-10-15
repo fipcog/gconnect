@@ -12,7 +12,8 @@ const DesctopHeader = styled.header`
     margin-bottom: 15px;
 
     background: ${theme.colors.primaryBgr};
-    background: linear-gradient(175deg, rgba(224,26,79,1) 0%, rgba(241,89,70,1) 48%, rgba(249,194,46,1) 100%);
+    /* background: linear-gradient(175deg, rgba(31,19,33,1) 0%, rgba(91,122,212,1) 48%, rgba(21,32,52,1) 100%); */
+    background: ${theme.colors.primaryBgr};
     color: ${theme.colors.color};
     border-radius: 10px;
 `

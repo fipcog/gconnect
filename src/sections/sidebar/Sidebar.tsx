@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { S } from "./SidebarStyles";
 
 
@@ -7,11 +8,11 @@ export const Sidebar: React.FC = () => {
         <S.Sidebar>
             <nav>
                 <ul>
-                    <S.ListItem><a href="#">Profile</a></S.ListItem>
-                    <S.ListItem><a href="#">Messages</a></S.ListItem>
-                    <S.ListItem><a href="#">News</a></S.ListItem>
-                    <S.ListItem><a href="#">Music</a></S.ListItem>
-                    <S.ListItem><a href="#">Settings</a></S.ListItem>
+                    <S.ListItem><NavLink to="/Profile">Profile</NavLink></S.ListItem>
+                    <S.ListItem><NavLink to="/Dialogs">Messages</NavLink></S.ListItem>
+                    <S.ListItem><NavLink to="/News">News</NavLink></S.ListItem>
+                    <S.ListItem><NavLink to="/Music">Music</NavLink></S.ListItem>
+                    <S.ListItem><NavLink to="/Settings">Settings</NavLink></S.ListItem>
                 </ul>
             </nav>
         </S.Sidebar>
