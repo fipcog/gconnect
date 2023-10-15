@@ -8,14 +8,18 @@ const DialogMessage = styled.article`
     align-items: flex-start;
 `
 
-const UserName = styled.span`
+const UserName = styled.div`
     display: block;
     width: 100%;
     font-size: .7em;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    & > a {
+        text-decoration: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: ${theme.colors.altColor};
+    }
 `
 
 const UserMessage = styled.p`

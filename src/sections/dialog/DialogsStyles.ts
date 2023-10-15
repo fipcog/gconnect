@@ -43,10 +43,10 @@ const ContactsListItem = styled.li`
 
     & > a {
         text-decoration: none;
-
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        color: ${theme.colors.altColor};
     }
 `
 

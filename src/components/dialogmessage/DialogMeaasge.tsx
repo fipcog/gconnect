@@ -14,7 +14,7 @@ export const DialogMessage: React.FC<DialogMessagePropsTypes> = (props) => {
         <S.DialogMessage>
             <FlexWrapper direction="column" width="140px" align="center" gap="5px">
                 <UserImage image={props.image} width="40px" height="40px"/>
-                <S.UserName>{props.userName}</S.UserName>
+                <S.UserName><a href="#">{props.userName}</a></S.UserName>
             </FlexWrapper>
             <S.UserMessage>{props.children}</S.UserMessage>
         </S.DialogMessage>
