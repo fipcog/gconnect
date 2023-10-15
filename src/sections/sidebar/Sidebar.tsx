@@ -8,11 +8,11 @@ export const Sidebar: React.FC = () => {
         <S.Sidebar>
             <nav>
                 <ul>
-                    <S.ListItem><NavLink to="/Profile">Profile</NavLink></S.ListItem>
-                    <S.ListItem><NavLink to="/Dialogs">Messages</NavLink></S.ListItem>
-                    <S.ListItem><NavLink to="/News">News</NavLink></S.ListItem>
-                    <S.ListItem><NavLink to="/Music">Music</NavLink></S.ListItem>
-                    <S.ListItem><NavLink to="/Settings">Settings</NavLink></S.ListItem>
+                    <S.ListItem><NavLink to="/profile">Profile</NavLink></S.ListItem>
+                    <S.ListItem><NavLink to="/dialogs">Messages</NavLink></S.ListItem>
+                    <S.ListItem><NavLink to="/news">News</NavLink></S.ListItem>
+                    <S.ListItem><NavLink to="/music">Music</NavLink></S.ListItem>
+                    <S.ListItem><NavLink to="/settings">Settings</NavLink></S.ListItem>
                 </ul>
             </nav>
         </S.Sidebar>
