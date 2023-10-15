@@ -29,27 +29,6 @@ const ContactsList = styled.ul`
     border-right: 2px solid ${theme.colors.accent};
 `
 
-const ContactsListItem = styled.li`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 10px;
-
-    width: 100%;
-    max-height: 40px;
-
-    font-size: 1.1em;
-
-    & > a {
-        text-decoration: none;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: ${theme.colors.altColor};
-    }
-`
-
 const DialogsDesk = styled.div`
     display: flex;
     flex-direction: column;
@@ -64,6 +43,5 @@ const DialogsDesk = styled.div`
 export const S = {
     Dialogs,
     ContactsList,
-    ContactsListItem,
     DialogsDesk,
 } 
