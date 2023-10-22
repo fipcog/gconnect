@@ -1,28 +1,20 @@
 import  React  from 'react';
 import { S } from './ProfileStyles';
 import profileimage from  '../../assets/wallpaper.jpg';
-import userimage from '../../assets/userimage.jpg';
-import { FlexWrapper } from '../../components/FlexWrapper';
-import { UserImage } from '../../components/userImage/UserImage';
 import { Posts } from '../../components/posts/Posts';
+import { UserProfile } from '../../components/userprofile/UserProfile';
+import { UserPosts } from '../..';
 
-export const Profile: React.FC = () => {
+type ProfilePropsTypes = {
+    userPosts: UserPosts
+}
+
+export const Profile: React.FC<ProfilePropsTypes> = ({userPosts}) => {
     return (
         <S.Profile>
             <S.ProfileImage src={profileimage}/>
-            <FlexWrapper height='200px' margin='10px 0 0 0'>
-                <UserImage width='150px' height='150px' image={userimage} margin='0 50px 0 0'/>
-                <FlexWrapper direction='column'>
-                    <S.UserName>User Name</S.UserName>
-                    <span>Date of birth: Date</span>
-                    <S.UserAddress>
-                        <span>City: City</span>
-                        <span>Address: Address</span>
-                        <span>Web Site: http://mysite.com</span>
-                    </S.UserAddress>
-                </FlexWrapper>
-            </FlexWrapper>
-            <Posts/>
+            <UserProfile/>
+            <Posts userPosts={userPosts}/>
         </S.Profile>
     )
 }

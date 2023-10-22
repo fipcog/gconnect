@@ -6,16 +6,20 @@ import { Dialogs } from '../dialog/Dialogs';
 import { News } from '../news/News';
 import { Music } from '../music/Music';
 import { Settings } from '../settings/Settings';
+import { AppData } from '../../App';
 
+type MainPropsTypes = {
+    appData: AppData
+}
 
-export const Main: React.FC = () => {
+export const Main: React.FC<MainPropsTypes> = ({appData}) => {
     return(
         <S.Main>
-            <Route path={'/profile'} component={ () => <Profile/> }/>
-            <Route path={'/dialogs'} component={ () => <Dialogs/> }/>
-            <Route path={'/news'} component={ () => <News/>}/>
-            <Route path={'/music'} component={ () => <Music/>}/>
-            <Route path={'/settings'} component={ () => <Settings/>}/>
+            <Route path={'/profile'} render={ () => <Profile userPosts={appData.userPosts}/> }/>
+            <Route path={'/dialogs'} render={ () => <Dialogs messages={appData.messages} userContacts={appData.userContacts}/> }/>
+            <Route path={'/news'} render={ () => <News/>}/>
+            <Route path={'/music'} render={ () => <Music/>}/>
+            <Route path={'/settings'} render={ () => <Settings/>}/>
         </S.Main>
     )
 }

@@ -32,20 +32,8 @@ const ProfileImage = styled.img`
     border-radius: 10px;
 `
 
-const UserName = styled.h1`
-    margin-bottom: 40px;
-`
-
-const UserAddress = styled.address`
-    display: flex;
-    flex-direction: column;
-
-    font-style: normal;
-`
 
 export const S = {
     Profile,
     ProfileImage,
-    UserName,
-    UserAddress,
 }

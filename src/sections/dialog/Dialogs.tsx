@@ -4,37 +4,35 @@ import { UserImage } from "../../components/userImage/UserImage";
 import { DialogMessage } from "../../components/dialogmessage/DialogMeaasge";
 import { NavLink } from "react-router-dom";
 import { ContactsListItem } from "../../components/contactslistitem/ContactsListItem";
+import { Messages, UserContacts } from "../..";
+import { message } from "antd";
 
+type DialogPropsTypes = {
+    messages: Messages
+    userContacts: UserContacts
+}
 
-export const Dialogs: React.FC = () => {
+export const Dialogs: React.FC<DialogPropsTypes> = ({messages, userContacts}) => {
     return (
         <S.Dialogs>
             <S.ContactsList>
-                <ContactsListItem image="#" id="0" name="Andrew Andrew"/>
-                <ContactsListItem image="#" id="1" name="Dmitry Dmitry"/>
-                <ContactsListItem image="#" id="2" name="Sasha Sasha"/>
-                <ContactsListItem image="#" id="3" name="Sveta Sveta"/>
-                <ContactsListItem image="#" id="4" name="Victor Victor"/>
+                {userContacts.map(contact => <ContactsListItem  key={contact.id}
+                                                                image="#" 
+                                                                id={contact.id} 
+                                                                name={contact.name}
+                                                />
+                                )
+                }
             </S.ContactsList>
             <S.DialogsDesk>
-                <DialogMessage image="#" userName="Andrew Andrew">
-                    Message Message Message Message Message 
-                    Message Message Message Message Message 
-                    Message Message Message
-                </DialogMessage>
-                <DialogMessage image="#" userName="Dmitry Dmitry">
-                    Message Message Message Message Message 
-                    Message Message Message Messessage
-                </DialogMessage>
-                <DialogMessage image="#" userName="Sasha Sasha">
-                    Message Message MessaMessage Message Message Message 
-                    Message Message Message
-                </DialogMessage>
-                <DialogMessage image="#" userName="Victor Victor">
-                    Message Message Message Message Message 
-                    Message Mge Message 
-                    Message Message Message
-                </DialogMessage>
+                {messages.map(massage => <DialogMessage key={massage.id} 
+                                                        image="#" 
+                                                        userName={massage.messageAuthor}
+                                                        >
+                                                        {massage.message}
+                                        </DialogMessage>
+                            )
+                }
             </S.DialogsDesk>
         </S.Dialogs>
     )

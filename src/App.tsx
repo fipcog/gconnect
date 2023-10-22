@@ -5,15 +5,25 @@ import { Header } from './sections/header/Header';
 import { FlexWrapper } from './components/FlexWrapper';
 import { Sidebar } from './sections/sidebar/Sidebar';
 import { Main } from './sections/main/Main';
+import { Messages, UserContacts, UserPosts } from '.';
 
+export type AppData = {
+  userPosts: UserPosts
+  messages: Messages
+  userContacts: UserContacts
+}
 
-function App() {
+type AppPropsTypes = {
+  appData: AppData
+}
+
+function App(props: AppPropsTypes) {
   return (
     <SiteWrapper>
         <Header/>
         <FlexWrapper>
           <Sidebar/>
-          <Main/>
+          <Main appData={props.appData}/>
         </FlexWrapper>
     </SiteWrapper>
   );

@@ -2,14 +2,16 @@ import  React  from 'react';
 import { S } from './PostsListStyles';
 import image from '../../assets/userimage.jpg'
 import { Post } from '../post/Post';
+import { UserPosts } from '../..';
 
-export const PostsList: React.FC = () => {
+type PostsListPropsTypes = {
+    userPosts: UserPosts
+}
+
+export const PostsList: React.FC<PostsListPropsTypes> = ({userPosts}) => {
     return(
         <S.PostsList>
-            <Post image={image}>Why nobody loves me</Post>
-            <Post image={image}>Why nobody loves me</Post>
-            <Post image={image}>Why nobody loves me</Post>
-            <Post image={image}>Why nobody loves me</Post>
+            {userPosts.map(post => <Post key={post.id} image={image}>{post.post}</Post>)}
         </S.PostsList>
     )
 }

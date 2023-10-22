@@ -1,14 +1,19 @@
 import  React  from 'react';
 import { S } from './PostsStyles';
 import { PostsList } from '../postslist/PostsList';
+import { UserPosts } from '../..';
 
-export const Posts: React.FC = () => {
+type PostsPropsTypes = {
+    userPosts: UserPosts
+}
+
+export const Posts: React.FC<PostsPropsTypes> = ({userPosts}) => {
     return(
         <S.Posts>
             <S.SectionTitlt>Posts</S.SectionTitlt>
             <S.TextArea placeholder='Type your minds'/>
             <S.PostBtn>Send</S.PostBtn>
-            <PostsList/>
+            <PostsList userPosts={userPosts}/>
         </S.Posts>
     )
 }
