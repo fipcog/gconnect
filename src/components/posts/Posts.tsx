@@ -1,7 +1,7 @@
 import  React  from 'react';
 import { S } from './PostsStyles';
 import { PostsList } from '../postslist/PostsList';
-import { UserPosts } from '../..';
+import { UserPosts } from '../../redux/state';
 
 type PostsPropsTypes = {
     userPosts: UserPosts

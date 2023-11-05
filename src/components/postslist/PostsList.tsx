@@ -2,7 +2,7 @@ import  React  from 'react';
 import { S } from './PostsListStyles';
 import image from '../../assets/userimage.jpg'
 import { Post } from '../post/Post';
-import { UserPosts } from '../..';
+import { UserPosts } from '../../redux/state';
 
 type PostsListPropsTypes = {
     userPosts: UserPosts

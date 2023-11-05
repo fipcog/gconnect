@@ -4,15 +4,18 @@ import { UserImage } from "../../components/userImage/UserImage";
 import { DialogMessage } from "../../components/dialogmessage/DialogMeaasge";
 import { NavLink } from "react-router-dom";
 import { ContactsListItem } from "../../components/contactslistitem/ContactsListItem";
-import { Messages, UserContacts } from "../..";
-import { message } from "antd";
+import { Messages, UserContacts } from "../../redux/state";
+
 
 type DialogPropsTypes = {
-    messages: Messages
-    userContacts: UserContacts
+    dialogsData: {
+        messages: Messages
+        userContacts: UserContacts
+    }
 }
 
-export const Dialogs: React.FC<DialogPropsTypes> = ({messages, userContacts}) => {
+export const Dialogs: React.FC<DialogPropsTypes> = ({dialogsData}) => {
+    const {messages, userContacts} = dialogsData
     return (
         <S.Dialogs>
             <S.ContactsList>

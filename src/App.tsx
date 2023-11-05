@@ -5,13 +5,9 @@ import { Header } from './sections/header/Header';
 import { FlexWrapper } from './components/FlexWrapper';
 import { Sidebar } from './sections/sidebar/Sidebar';
 import { Main } from './sections/main/Main';
-import { Messages, UserContacts, UserPosts } from '.';
+import { State } from './redux/state';
 
-export type AppData = {
-  userPosts: UserPosts
-  messages: Messages
-  userContacts: UserContacts
-}
+export type AppData = State
 
 type AppPropsTypes = {
   appData: AppData

@@ -15,8 +15,8 @@ type MainPropsTypes = {
 export const Main: React.FC<MainPropsTypes> = ({appData}) => {
     return(
         <S.Main>
-            <Route path={'/profile'} render={ () => <Profile userPosts={appData.userPosts}/> }/>
-            <Route path={'/dialogs'} render={ () => <Dialogs messages={appData.messages} userContacts={appData.userContacts}/> }/>
+            <Route path={'/profile'} render={ () => <Profile userPosts={appData.profile.userPosts}/> }/>
+            <Route path={'/dialogs'} render={ () => <Dialogs dialogsData={appData.dialogs}/> }/>
             <Route path={'/news'} render={ () => <News/>}/>
             <Route path={'/music'} render={ () => <Music/>}/>
             <Route path={'/settings'} render={ () => <Settings/>}/>
