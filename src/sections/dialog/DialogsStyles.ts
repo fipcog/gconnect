@@ -4,7 +4,7 @@ import { theme } from "../../style/Theme"
 const Dialogs = styled.section`
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 
     width: 100%;
     height: 100%;

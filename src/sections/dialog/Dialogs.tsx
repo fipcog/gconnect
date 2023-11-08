@@ -1,10 +1,10 @@
 import React from "react";
 import { S } from "./DialogsStyles";
-import { UserImage } from "../../components/userImage/UserImage";
 import { DialogMessage } from "../../components/dialogmessage/DialogMeaasge";
-import { NavLink } from "react-router-dom";
 import { ContactsListItem } from "../../components/contactslistitem/ContactsListItem";
 import { Messages, UserContacts } from "../../redux/state";
+import { SendMessageTextarea } from "../../components/sendmessagetextarea/SendMessageTextarea";
+import { FlexWrapper } from "../../components/FlexWrapper";
 
 
 type DialogPropsTypes = {
@@ -37,6 +37,9 @@ export const Dialogs: React.FC<DialogPropsTypes> = ({dialogsData}) => {
                             )
                 }
             </S.DialogsDesk>
+            <FlexWrapper justify="flex-end">
+                <SendMessageTextarea width="70%" padding="30px 70px 0 20px"/>
+            </FlexWrapper>
         </S.Dialogs>
     )
 }
