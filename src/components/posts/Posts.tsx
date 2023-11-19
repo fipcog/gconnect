@@ -1,8 +1,8 @@
 import  React  from 'react';
 import { S } from './PostsStyles';
 import { PostsList } from '../postslist/PostsList';
-import { UserPosts } from '../../redux/state';
 import { SendMessageTextarea } from '../sendmessagetextarea/SendMessageTextarea';
+import { UserPosts } from '../../reducers/profileReducer';
 
 type PostsPropsTypes = {
     userPosts: UserPosts

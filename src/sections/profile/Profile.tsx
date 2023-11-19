@@ -3,7 +3,8 @@ import { S } from './ProfileStyles';
 import profileimage from  '../../assets/wallpaper.jpg';
 import { Posts } from '../../components/posts/Posts';
 import { UserProfile } from '../../components/userprofile/UserProfile';
-import { UserPosts } from '../../redux/state';
+import { UserPosts } from '../../reducers/profileReducer';
+
 
 type ProfilePropsTypes = {
     userPosts: UserPosts

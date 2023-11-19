@@ -2,9 +2,9 @@ import React from "react";
 import { S } from "./DialogsStyles";
 import { DialogMessage } from "../../components/dialogmessage/DialogMeaasge";
 import { ContactsListItem } from "../../components/contactslistitem/ContactsListItem";
-import { Messages, UserContacts } from "../../redux/state";
 import { SendMessageTextarea } from "../../components/sendmessagetextarea/SendMessageTextarea";
 import { FlexWrapper } from "../../components/FlexWrapper";
+import { Messages, UserContacts } from "../../reducers/dialogsReducer";
 
 
 type DialogPropsTypes = {

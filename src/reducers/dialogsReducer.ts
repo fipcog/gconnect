@@ -1,40 +1,15 @@
-import { Messages, UserContacts } from "../reducers/dialogsReducer"
-import { UserPosts } from "../reducers/profileReducer"
+export type Message = { id: string, messageAuthor: string, message: string }
+export type Messages = Message[]
+export type UserContact = { id: string, name: string }
+export type UserContacts = UserContact[]
 
-
-
-export type State = {
-    profile: {
-        userPosts: UserPosts
-    }
+type initialStateType = {
     dialogs: {
         messages: Messages
         userContacts: UserContacts
     }
-    sidebar:{}
 }
-
-export const state: State = {
-    profile: {
-        userPosts: [
-            {
-                id: '1',
-                post: 'Why nobody loves me'
-            },
-            {
-                id: '2',
-                post: 'Why nobody loves'
-            },
-            {
-                id: '3',
-                post: 'Why loves me'
-            },
-            {
-                id: '4',
-                post: 'nobody loves me'
-            },
-        ],
-    },
+const initialState = {
     dialogs: {
         messages: [
             {
@@ -85,14 +60,11 @@ export const state: State = {
                 name: 'Victor Victor'
             },
         ],
-    },
-    sidebar: {}
+    }
+}
+export const dialogsReducer = (state = initialState, action: masterActionType) => {
+
 }
 
-
-
-
-
-
-
+type masterActionType = {}
 
