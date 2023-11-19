@@ -1,17 +1,16 @@
+import { v1 } from "uuid"
+
 export type Message = { id: string, messageAuthor: string, message: string }
 export type Messages = Message[]
 export type UserContact = { id: string, name: string }
 export type UserContacts = UserContact[]
 
 type initialStateType = {
-    dialogs: {
-        messages: Messages
-        userContacts: UserContacts
-    }
+    messages: Messages
+    userContacts: UserContacts
 }
 const initialState = {
-    dialogs: {
-        messages: [
+    messages: [
             {
                 id: '1',
                 messageAuthor: 'Andrew Andrew',
@@ -37,8 +36,8 @@ const initialState = {
                 messageAuthor: 'Victor Victor',
                 message: 'Message Message Message Message Message Messagee Message Message Message Message Message'
             },
-        ],
-        userContacts: [
+    ],
+    userContacts: [
             {
                 id: '1',
                 name: 'Andrew Andrew'
@@ -59,12 +58,26 @@ const initialState = {
                 id: '5',
                 name: 'Victor Victor'
             },
-        ],
+    ],
+}
+export const dialogsReducer = (state = initialState, action: masterActionType): initialStateType => {
+    switch(action.type) {
+        case 'ADD_NEW_MESSAGE':
+            return {...state, messages: [...state.messages, action.payload.newMessage]}
+        default:
+            return state
     }
 }
-export const dialogsReducer = (state = initialState, action: masterActionType) => {
 
+type masterActionType = addMessage
+
+type addMessage = ReturnType<typeof addMessageAC>
+export const addMessageAC = (message: string) => {
+    const newMessage = { id: v1(), messageAuthor: 'UserName', message }
+    return {
+        type: 'ADD_NEW_MESSAGE',
+        payload: {
+            newMessage
+        }
+    } as const
 }
-
-type masterActionType = {}
-

@@ -4,7 +4,6 @@ import profileimage from '../../assets/wallpaper.jpg';
 import userimage from '../../assets/userimage.jpg';
 import { FlexWrapper } from '../../components/FlexWrapper';
 import { UserImage } from '../../components/userImage/UserImage';
-import { Posts } from '../../components/posts/Posts';
 
 export const UserProfile: React.FC = () => {
     return (

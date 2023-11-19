@@ -3,13 +3,10 @@ import { v1 } from "uuid"
 export type UserPost = { id: string, post: string }
 export type UserPosts = UserPost[]
 type initialStateType = {
-    profile: {
-        userPosts: UserPosts
-    }
+    userPosts: UserPosts
 }
 const initialState: initialStateType = {
-    profile: {
-        userPosts: [
+    userPosts: [
             {
                 id: '1',
                 post: 'Why nobody loves me'
@@ -26,13 +23,12 @@ const initialState: initialStateType = {
                 id: '4',
                 post: 'nobody loves me'
             },
-        ],
-    }
+    ],
 }
-export const profileReducer = (state = initialState, action: masterActionType) => {
+export const profileReducer = (state = initialState, action: masterActionType): initialStateType => {
     switch(action.type) {
         case 'ADD_USER_POST':
-            return {...state, profile: {...state.profile, userPosts: [{id: action.payload.id, post: action.payload.post}, ...state.profile.userPosts]} }
+            return {...state, userPosts: [action.payload.newPost, ...state.userPosts] }
         default:
             return state
     }
@@ -42,11 +38,11 @@ type masterActionType = addUserPost
 
 type addUserPost = ReturnType<typeof addUserPostAC>
 export const addUserPostAC = (post: string) => {
+    const newPost = {id: v1(), post}
     return {
         type: 'ADD_USER_POST',
         payload: {
-            id: v1(),
-            post
+            newPost
         }
     } as const 
 }

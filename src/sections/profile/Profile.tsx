@@ -1,21 +1,16 @@
 import  React  from 'react';
 import { S } from './ProfileStyles';
 import profileimage from  '../../assets/wallpaper.jpg';
-import { Posts } from '../../components/posts/Posts';
+import Posts from '../../components/posts/Posts';
 import { UserProfile } from '../../components/userprofile/UserProfile';
-import { UserPosts } from '../../reducers/profileReducer';
 
 
-type ProfilePropsTypes = {
-    userPosts: UserPosts
-}
-
-export const Profile: React.FC<ProfilePropsTypes> = ({userPosts}) => {
+export const Profile: React.FC = () => {
     return (
         <S.Profile>
             <S.ProfileImage src={profileimage}/>
             <UserProfile/>
-            <Posts userPosts={userPosts}/>
+            <Posts/>
         </S.Profile>
     )
 }

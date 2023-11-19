@@ -5,21 +5,16 @@ import { Header } from './sections/header/Header';
 import { FlexWrapper } from './components/FlexWrapper';
 import { Sidebar } from './sections/sidebar/Sidebar';
 import { Main } from './sections/main/Main';
-import { State } from './redux/state';
 
-export type AppData = State
 
-type AppPropsTypes = {
-  appData: AppData
-}
 
-function App(props: AppPropsTypes) {
+function App() {
   return (
     <SiteWrapper>
         <Header/>
         <FlexWrapper>
           <Sidebar/>
-          <Main appData={props.appData}/>
+          <Main />
         </FlexWrapper>
     </SiteWrapper>
   );
