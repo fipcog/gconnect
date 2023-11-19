@@ -5,11 +5,11 @@ export type Messages = Message[]
 export type UserContact = { id: string, name: string }
 export type UserContacts = UserContact[]
 
-type initialStateType = {
+export type InitialStateDialogs = {
     messages: Messages
     userContacts: UserContacts
 }
-const initialState = {
+const initialState: InitialStateDialogs = {
     messages: [
             {
                 id: '1',
@@ -60,7 +60,7 @@ const initialState = {
             },
     ],
 }
-export const dialogsReducer = (state = initialState, action: masterActionType): initialStateType => {
+export const dialogsReducer = (state = initialState, action: masterActionType): InitialStateDialogs => {
     switch(action.type) {
         case 'ADD_NEW_MESSAGE':
             return {...state, messages: [...state.messages, action.payload.newMessage]}
