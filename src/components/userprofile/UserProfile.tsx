@@ -9,7 +9,7 @@ export const UserProfile: React.FC = () => {
     return (
         <FlexWrapper height='200px' margin='10px 0 0 0'>
             <UserImage width='150px' height='150px' image={userimage} margin='0 50px 0 0' />
-            <FlexWrapper direction='column'>
+            <FlexWrapper direction='column' width='auto'>
                 <S.UserName>User Name</S.UserName>
                 <span>Date of birth: Date</span>
                 <S.UserAddress>

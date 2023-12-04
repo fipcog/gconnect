@@ -12,7 +12,7 @@ function App() {
   return (
     <SiteWrapper>
         <Header/>
-        <FlexWrapper>
+        <FlexWrapper width='100%'>
           <Sidebar/>
           <Main />
         </FlexWrapper>

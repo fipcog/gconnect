@@ -20,8 +20,7 @@ export const FlexWrapper = styled.div<FlexWrapperType>`
     align-items: ${props => props.align || "stretch"};
     flex-wrap: ${props => props.wrap || "nowrap"};
 
-    max-width: ${props => props.width || "100%"};
-    width: 100%;
+    width: ${props => props.width || "100%"};
     height: ${props => props.height || "100%"};
     gap: ${props => props.gap || "inherit"};
 
