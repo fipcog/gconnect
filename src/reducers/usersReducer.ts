@@ -1,7 +1,7 @@
 import { UsersType } from "../sections/users/UsersContainer"
 
 
-type InitialStateUsers = {
+export type InitialStateUsers = {
     users: UsersType
 }
 const initialState: InitialStateUsers = {

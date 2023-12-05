@@ -25,34 +25,6 @@ const UsersList = styled.ul`
     margin-bottom: 60px;
 `
 
-const User = styled.li`
-    display: flex;
-    align-items: center;
-    gap: 30px;
-
-    width: 800px;
-`
-
-const UserDataWrapper = styled.div`
-    display: flex;
-    width: 500px;
-    height: 90px;
-
-    padding: 10px 15px;
-
-    border: 1px solid ${theme.colors.primaryBgr};
-    border-radius: 10px;
-`
-
-const UserData = styled.span`
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-`
-const UserDataLocation = styled(UserData)`
-    text-align: end;
-`
 
 const MoreButton = styled(Button)`
     margin-left: 250px;
@@ -65,10 +37,6 @@ const MoreButton = styled(Button)`
 
 export const S = {
     UsersPage,
-    UserDataWrapper,
     UsersList,
-    User,
-    UserData,
-    UserDataLocation,
     MoreButton,
 }

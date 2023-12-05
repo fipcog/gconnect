@@ -1,6 +1,7 @@
 import { Button } from "../../components/Button"
 import { FlexWrapper } from "../../components/FlexWrapper"
 import { UserImage } from "../../components/userImage/UserImage"
+import { UserSearchedCard } from "../../components/user_searched_card/UserSearchedCard"
 import { UsersPropsType } from "./UsersContainer"
 import { S } from "./UsersStyles"
 
@@ -20,26 +21,10 @@ export const Users: React.FC<UsersPropsType> = (props) => {
             <S.UsersList>
                 {users.map(u => {
                     return (
-                        <S.User key={u.id}>
-                            <FlexWrapper direction="column" align="center" gap="10px" width="auto">
-                                <UserImage image={u.avatarURL} alt={`user ${u.fullName} avatar`} />
-                                {u.followed ? 
-                                            <Button onClick={() => unfollowUser(u.id)}>Unfollow</Button>
-                                            :
-                                            <Button onClick={() => followUser(u.id)}>Follow</Button>
-                                }
-                            </FlexWrapper>
-                            <S.UserDataWrapper>
-                                <FlexWrapper direction="column" justify="space-between" width="50%">
-                                    <S.UserData>{u.fullName}</S.UserData>
-                                    <S.UserData>{u.status}</S.UserData>
-                                </FlexWrapper>
-                                <FlexWrapper direction="column" justify="center" gap="10px" width="50%">
-                                    <S.UserDataLocation>{u.location.city},</S.UserDataLocation>
-                                    <S.UserDataLocation>{u.location.country}</S.UserDataLocation>
-                                </FlexWrapper>
-                            </S.UserDataWrapper>
-                        </S.User>
+                        <UserSearchedCard key={u.id} 
+                                        user={u} 
+                                        followUser={()=> followUser(u.id)} 
+                                        unfollowUser={()=> unfollowUser(u.id)}/>
                     )
                 })}
             </S.UsersList>
