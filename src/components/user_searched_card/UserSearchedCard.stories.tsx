@@ -25,11 +25,12 @@ type Story = StoryObj<typeof UserSearchedCard>;
 export const followed: Story = {
     args: {
         user: {
-            id:'2', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', 
+            id:'2',
+            photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null}, 
             followed: true, 
             status: 'I am looking for a job...', 
-            fullName: 'Sergey Volga', 
-            location: {city: 'Minsk', country: 'Belarus'}}
+            name: 'Sergey Volga', 
+        }
     }
 };
 
@@ -37,11 +38,10 @@ export const unfollowed: Story = {
     args: {
         user: {
             id:'1', 
-            avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', 
+            photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null},
             followed: false, 
             status: 'I am looking for a job...', 
-            fullName: 'Alex Nekrasov', 
-            location: {city: 'Minsk', country: 'Belarus'},
+            name: 'Alex Nekrasov', 
         }
     }    
 };

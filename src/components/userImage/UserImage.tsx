@@ -25,5 +25,5 @@ const StyledUserImage = styled.img`
     object-fit: cover;
     border-radius: 50%;
 
-    background-color: ${theme.colors.accent};
+    /* background-color: ${theme.colors.accent}; */
 `

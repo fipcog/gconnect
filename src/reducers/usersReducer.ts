@@ -3,14 +3,15 @@ import { UsersType } from "../sections/users/UsersContainer"
 
 export type InitialStateUsers = {
     users: UsersType
+    maxAmountOnPage: number
+    totalAmountOfUsers: number
+    currentPage: number
 }
 const initialState: InitialStateUsers = {
-    users: [
-        {id:'1', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: false, status: 'I am looking for a job...', fullName: 'Alex Nekrasov', location: {city: 'Minsk', country: 'Belarus'}},
-        {id:'2', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: true, status: 'I am looking for a job...', fullName: 'Sergey Volga', location: {city: 'Minsk', country: 'Belarus'}},
-        {id:'3', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: false, status: 'I am looking for a job...', fullName: 'Dima Shubin', location: {city: 'Minsk', country: 'Belarus'}},
-        {id:'4', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: true, status: 'I am looking for a job...', fullName: 'Petya Sregeev', location: {city: 'Minsk', country: 'Belarus'}},
-    ]
+    users: [],
+    maxAmountOnPage: 5,
+    totalAmountOfUsers: 0,
+    currentPage: 1,
 }
 
 export const usersReducer = (state = initialState, action: MainActionType): InitialStateUsers => {
@@ -20,13 +21,17 @@ export const usersReducer = (state = initialState, action: MainActionType): Init
         case 'UNFOLLOW_USER':
             return {...state, users: state.users.map(u => u.id === action.payload.userId ? {...u, followed: false} : u)}
         case 'SET_USERS':
-            return {...state, users: [...state.users, ...action.payload.users]}
+            return {...state, users: [...action.payload.users]}
+        case 'SET_CURRENT_PAGE':
+            return {...state, currentPage: action.payload.pageNumber}
+        case 'SET_TOTAL_AMOUNT_OF_USERS':
+            return {...state, totalAmountOfUsers: action.payload.amount}
         default:
             return state
     }
 }
 
-type MainActionType = FollowUser | UnfollowUser | setUsers
+type MainActionType = FollowUser | UnfollowUser | setUsers | SetCurrentPage | SetTotalAmountOfUsers
 
 type FollowUser = ReturnType<typeof followUserAC>
 export const followUserAC = (userId: string) => {
@@ -56,4 +61,24 @@ export const setUsersAC = (users: UsersType) => {
             users
         }
     } as const
+}
+
+type SetCurrentPage = ReturnType<typeof SetCurrentPageAC>
+export const SetCurrentPageAC = (pageNumber: number) => {
+    return {
+        type: `SET_CURRENT_PAGE`,
+        payload: {
+            pageNumber
+        }
+    }   as const
+}
+
+type SetTotalAmountOfUsers = ReturnType<typeof SetTotalAmountOfUsersAC>
+export const SetTotalAmountOfUsersAC = (amount: number) => {
+    return {
+        type: `SET_TOTAL_AMOUNT_OF_USERS`,
+        payload: {
+            amount
+        }
+    }   as const
 }

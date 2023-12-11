@@ -5,11 +5,14 @@ let initial: InitialStateUsers
 beforeEach(()=> {
     initial = {
         users: [
-            {id:'1', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: false, status: 'I am looking for a job...', fullName: 'Alex Nekrasov', location: {city: 'Minsk', country: 'Belarus'}},
-            {id:'2', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: true, status: 'I am looking for a job...', fullName: 'Sergey Volga', location: {city: 'Minsk', country: 'Belarus'}},
-            {id:'3', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: false, status: 'I am looking for a job...', fullName: 'Dima Shubin', location: {city: 'Minsk', country: 'Belarus'}},
-            {id:'4', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: true, status: 'I am looking for a job...', fullName: 'Petya Sregeev', location: {city: 'Minsk', country: 'Belarus'}},
-        ]
+            {id:'1', photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null}, followed: false, status: 'I am looking for a job...', name: 'Alex Nekrasov'},
+            {id:'2', photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null}, followed: true, status: 'I am looking for a job...', name: 'Sergey Volga'},
+            {id:'3', photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null}, followed: false, status: 'I am looking for a job...', name: 'Dima Shubin'},
+            {id:'4', photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null}, followed: true, status: 'I am looking for a job...', name: 'Petya Sregeev'},
+        ],
+        maxAmountOnPage: 5,
+        totalAmountOfUsers: 0,
+        currentPage: 1,
     }
 })
 
@@ -25,10 +28,10 @@ test('change follow to false', ()=>{
 })
 test('adding new users', ()=>{
     const newUsers = [
-        {id:'1', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: false, status: 'I am looking for a job...', fullName: 'Alex Nekrasov', location: {city: 'Minsk', country: 'Belarus'}},
-        {id:'2', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: true, status: 'I am looking for a job...', fullName: 'Sergey Volga', location: {city: 'Minsk', country: 'Belarus'}},
-        {id:'3', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: false, status: 'I am looking for a job...', fullName: 'Dima Shubin', location: {city: 'Minsk', country: 'Belarus'}},
-        {id:'4', avatarURL:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', followed: true, status: 'I am looking for a job...', fullName: 'Petya Sregeev', location: {city: 'Minsk', country: 'Belarus'}},
+        {id:'1', photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null}, followed: false, status: 'I am looking for a job...', name: 'Alex Nekrasov'},
+        {id:'2', photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null}, followed: true, status: 'I am looking for a job...', name: 'Sergey Volga'},
+        {id:'3', photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null}, followed: false, status: 'I am looking for a job...', name: 'Dima Shubin'},
+        {id:'4', photos: {small:'https://uxwing.com/wp-content/themes/uxwing/download/emoji-emoticon/smile-icon.png', large: null}, followed: true, status: 'I am looking for a job...', name: 'Petya Sregeev'},
     ]
     let result = usersReducer(initial, setUsersAC(newUsers))
 
