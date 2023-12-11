@@ -1,5 +1,6 @@
 import { Button } from "../../components/Button"
 import { FlexWrapper } from "../../components/FlexWrapper"
+import { Pagination } from "../../components/pagination/Pagination"
 import { UserImage } from "../../components/userImage/UserImage"
 import { UserSearchedCard } from "../../components/user_searched_card/UserSearchedCard"
 import { UserType } from "./UsersContainer"
@@ -25,8 +26,11 @@ export const Users: React.FC<UsersPropsType> = (props) => {
             unfollowUser, 
             changePage } = props
 
+    const amountOfPages = Math.ceil(amountOfUsers / pageSize)
+
     return (
         <S.UsersPage>
+            <Pagination pagesAmount={amountOfPages} changePage={changePage}/>
             <S.UsersList>
                 {users.map(u => {
                     return (
