@@ -30,7 +30,7 @@ export const Users: React.FC<UsersPropsType> = (props) => {
 
     return (
         <S.UsersPage>
-            <Pagination pagesAmount={amountOfPages} changePage={changePage}/>
+            <Pagination pagesAmount={amountOfPages} currentPage={currentPage} changePage={changePage}/>
             <S.UsersList>
                 {users.map(u => {
                     return (

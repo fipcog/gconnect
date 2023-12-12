@@ -4,6 +4,7 @@ import {S} from './PaginationStyles'
 
 type PaginationType = {
     pagesAmount: number
+    currentPage: number
     changePage: (pageNum: number) => void
 }
 type StateType = {
@@ -43,11 +44,13 @@ export class Pagination extends React.Component<PaginationType, StateType> {
         const currentPages = pages.slice(start, end)
 
         return <S.Pagination>
-            <li><S.PaginationButton onClick={this.prevPortion}>{'<<'}</S.PaginationButton></li>
+            <li><S.PaginationButton onClick={this.prevPortion}>{'<'}</S.PaginationButton></li>
             {currentPages.map(pNum => {
-                return <li onClick={() => this.props.changePage(pNum)}><S.PageButton>{pNum}</S.PageButton></li>
+                return <li key={`${pNum}`} onClick={() => this.props.changePage(pNum)}>
+                    <S.PageButton active={this.props.currentPage === pNum ? true : false}>{pNum}</S.PageButton>
+                    </li>
             })}
-            <li><S.PaginationButton  onClick={this.nextPortion}>{'>>'}</S.PaginationButton></li>
+            <li><S.PaginationButton  onClick={this.nextPortion}>{'>'}</S.PaginationButton></li>
         </S.Pagination>
     }
 }

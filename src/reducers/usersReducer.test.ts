@@ -1,4 +1,4 @@
-import { InitialStateUsers, followUserAC, setUsersAC, unfollowUserAC, usersReducer } from "./usersReducer"
+import { InitialStateUsers, SetCurrentPageAC, SetTotalAmountOfUsersAC, followUserAC, setUsersAC, unfollowUserAC, usersReducer } from "./usersReducer"
 
 let initial: InitialStateUsers
 
@@ -36,4 +36,14 @@ test('adding new users', ()=>{
     let result = usersReducer(initial, setUsersAC(newUsers))
 
     expect(result.users.length).toBe(8)
+})
+test('setting current page', ()=>{
+    let result = usersReducer(initial, SetCurrentPageAC(2))
+
+    expect(result.currentPage).toBe(2)
+})
+test('setting total amount of users', ()=>{
+    let result = usersReducer(initial, SetTotalAmountOfUsersAC(44))
+
+    expect(result.totalAmountOfUsers).toBe(44)
 })

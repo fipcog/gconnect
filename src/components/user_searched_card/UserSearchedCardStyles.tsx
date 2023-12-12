@@ -12,7 +12,7 @@ const User = styled.li`
 
 const UserDataWrapper = styled.div`
     display: flex;
-    width: 500px;
+    width: 900px;
     height: 90px;
 
     padding: 10px 15px;

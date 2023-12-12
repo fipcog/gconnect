@@ -3,7 +3,9 @@ import { theme } from "../../style/Theme"
 import { Button } from "../Button"
 
 
-
+type PaginationButtonType = {
+    active: boolean
+}
 
 
 const Pagination = styled.ul`
@@ -13,14 +15,17 @@ const Pagination = styled.ul`
 
     margin: 0 auto;
     margin-bottom: 60px;
+    list-style: none;
 `
 
-const PageButton = styled.a`
+const PageButton = styled.a<PaginationButtonType>`
     cursor: pointer;
+    text-decoration: ${props => props.active ? 'underline' : 'none'};
+    font-weight: ${props => props.active ? 'bold' : 'inherit'};
 `
 
 const PaginationButton = styled(Button)`
-    width: 60px;
+    width: 40px;
 `
 
 export const S = {
