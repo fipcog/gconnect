@@ -6,12 +6,14 @@ export type InitialStateUsers = {
     maxAmountOnPage: number
     totalAmountOfUsers: number
     currentPage: number
+    isLoading: boolean
 }
 const initialState: InitialStateUsers = {
     users: [],
     maxAmountOnPage: 5,
     totalAmountOfUsers: 0,
     currentPage: 1,
+    isLoading: false
 }
 
 export const usersReducer = (state = initialState, action: MainActionType): InitialStateUsers => {
@@ -63,8 +65,8 @@ export const setUsersAC = (users: UsersType) => {
     } as const
 }
 
-type SetCurrentPage = ReturnType<typeof SetCurrentPageAC>
-export const SetCurrentPageAC = (pageNumber: number) => {
+type SetCurrentPage = ReturnType<typeof setCurrentPageAC>
+export const setCurrentPageAC = (pageNumber: number) => {
     return {
         type: `SET_CURRENT_PAGE`,
         payload: {
@@ -73,8 +75,18 @@ export const SetCurrentPageAC = (pageNumber: number) => {
     }   as const
 }
 
-type SetTotalAmountOfUsers = ReturnType<typeof SetTotalAmountOfUsersAC>
-export const SetTotalAmountOfUsersAC = (amount: number) => {
+type SetTotalAmountOfUsers = ReturnType<typeof setTotalAmountOfUsersAC>
+export const setTotalAmountOfUsersAC = (amount: number) => {
+    return {
+        type: `SET_TOTAL_AMOUNT_OF_USERS`,
+        payload: {
+            amount
+        }
+    }   as const
+}
+
+type SetIsLoading = ReturnType<typeof SetTotalAmountOfUsersAC>
+export const setIsLoadingAC = (amount: number) => {
     return {
         type: `SET_TOTAL_AMOUNT_OF_USERS`,
         payload: {

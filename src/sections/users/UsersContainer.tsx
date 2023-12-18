@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Users } from "./Users";
-import { SetCurrentPageAC, SetTotalAmountOfUsersAC, followUserAC, setUsersAC, unfollowUserAC } from "../../reducers/usersReducer";
+import { followUserAC, setCurrentPageAC, setTotalAmountOfUsersAC, setUsersAC, unfollowUserAC } from "../../reducers/usersReducer";
 import { AppRootStoreType } from "../../redux/store";
 import React from "react";
 import axios from "axios";
@@ -86,8 +86,8 @@ const mapDispatchToProps = (dispatch: any) => {
         followUser: (userId: string) => dispatch(followUserAC(userId)),
         unfollowUser: (userId: string) => dispatch(unfollowUserAC(userId)),
         setUsers: (users: UsersType) => dispatch(setUsersAC(users)),
-        setCurrentPage: (pageNum: number) => dispatch(SetCurrentPageAC(pageNum)),
-        setAmountOfUsers: (amount: number) => dispatch(SetTotalAmountOfUsersAC(amount))
+        setCurrentPage: (pageNum: number) => dispatch(setCurrentPageAC(pageNum)),
+        setAmountOfUsers: (amount: number) => dispatch(setTotalAmountOfUsersAC(amount))
     }
 }
 
