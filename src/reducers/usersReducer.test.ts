@@ -1,4 +1,4 @@
-import { InitialStateUsers, SetCurrentPageAC, SetTotalAmountOfUsersAC, followUserAC, setUsersAC, unfollowUserAC, usersReducer } from "./usersReducer"
+import { InitialStateUsers, setCurrentPageAC, setTotalAmountOfUsersAC, followUserAC, setUsersAC, unfollowUserAC, usersReducer, setIsLoadingAC } from "./usersReducer"
 
 let initial: InitialStateUsers
 
@@ -13,6 +13,7 @@ beforeEach(()=> {
         maxAmountOnPage: 5,
         totalAmountOfUsers: 0,
         currentPage: 1,
+        isLoading: false
     }
 })
 
@@ -38,12 +39,17 @@ test('adding new users', ()=>{
     expect(result.users.length).toBe(8)
 })
 test('setting current page', ()=>{
-    let result = usersReducer(initial, SetCurrentPageAC(2))
+    let result = usersReducer(initial, setCurrentPageAC(2))
 
     expect(result.currentPage).toBe(2)
 })
 test('setting total amount of users', ()=>{
-    let result = usersReducer(initial, SetTotalAmountOfUsersAC(44))
+    let result = usersReducer(initial, setTotalAmountOfUsersAC(44))
 
     expect(result.totalAmountOfUsers).toBe(44)
+})
+test('setting isLoading', ()=>{
+    let result = usersReducer(initial, setIsLoadingAC(true))
+
+    expect(result.isLoading).toBe(true)
 })

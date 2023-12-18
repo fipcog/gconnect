@@ -28,12 +28,14 @@ export const usersReducer = (state = initialState, action: MainActionType): Init
             return {...state, currentPage: action.payload.pageNumber}
         case 'SET_TOTAL_AMOUNT_OF_USERS':
             return {...state, totalAmountOfUsers: action.payload.amount}
+        case 'SET_IS_LOADING':
+            return {...state, isLoading: action.payload.isLoading}
         default:
             return state
     }
 }
 
-type MainActionType = FollowUser | UnfollowUser | setUsers | SetCurrentPage | SetTotalAmountOfUsers
+type MainActionType = FollowUser | UnfollowUser | setUsers | SetCurrentPage | SetTotalAmountOfUsers | SetIsLoading
 
 type FollowUser = ReturnType<typeof followUserAC>
 export const followUserAC = (userId: string) => {
@@ -85,12 +87,12 @@ export const setTotalAmountOfUsersAC = (amount: number) => {
     }   as const
 }
 
-type SetIsLoading = ReturnType<typeof SetTotalAmountOfUsersAC>
-export const setIsLoadingAC = (amount: number) => {
+type SetIsLoading = ReturnType<typeof setIsLoadingAC>
+export const setIsLoadingAC = (isLoading: boolean) => {
     return {
-        type: `SET_TOTAL_AMOUNT_OF_USERS`,
+        type: `SET_IS_LOADING`,
         payload: {
-            amount
+            isLoading
         }
     }   as const
 }

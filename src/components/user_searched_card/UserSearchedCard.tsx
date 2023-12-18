@@ -4,6 +4,7 @@ import { FlexWrapper } from "../FlexWrapper"
 import { UserImage } from "../userImage/UserImage"
 import { S } from "./UserSearchedCardStyles"
 import defaultAvatar from "../../assets/defaultUserAvatarImage.png"
+import { NavLink } from "react-router-dom"
 
 type UserSearchedCard = {
     unfollowUser: () => void
@@ -17,7 +18,7 @@ export const UserSearchedCard: React.FC<UserSearchedCard> = (props) => {
     return (
         <S.User>
             <FlexWrapper direction="column" align="center" gap="10px" width="auto">
-                <UserImage image={user.photos.small || defaultAvatar} alt={`user ${user.name} avatar`} />
+                <NavLink to={'/profile/'+ user.id}><UserImage image={user.photos.small || defaultAvatar} alt={`user ${user.name} avatar`} /></NavLink>
                 {user.followed ?
                     <Button onClick={unfollowUser}>Unfollow</Button>
                     :

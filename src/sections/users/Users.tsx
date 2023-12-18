@@ -1,6 +1,7 @@
 import { Button } from "../../components/Button"
 import { FlexWrapper } from "../../components/FlexWrapper"
 import { Pagination } from "../../components/pagination/Pagination"
+import { Preloader } from "../../components/preloader/Preloader"
 import { UserImage } from "../../components/userImage/UserImage"
 import { UserSearchedCard } from "../../components/user_searched_card/UserSearchedCard"
 import { UserType } from "./UsersContainer"
@@ -12,6 +13,7 @@ type UsersPropsType = {
     amountOfUsers: number
     currentPage: number
     pageSize: number
+    isLoading: boolean
     changePage: (pageNum: number) => void
     followUser: (userId: string) => void
     unfollowUser: (userId: string) => void
@@ -30,6 +32,7 @@ export const Users: React.FC<UsersPropsType> = (props) => {
 
     return (
         <S.UsersPage>
+            {props.isLoading && <Preloader />}
             <Pagination pagesAmount={amountOfPages} currentPage={currentPage} changePage={changePage}/>
             <S.UsersList>
                 {users.map(u => {
