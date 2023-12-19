@@ -1,10 +1,10 @@
-import { UserType } from "../../sections/users/UsersContainer"
 import { Button } from "../Button"
 import { FlexWrapper } from "../FlexWrapper"
 import { UserImage } from "../userImage/UserImage"
 import { S } from "./UserSearchedCardStyles"
 import defaultAvatar from "../../assets/defaultUserAvatarImage.png"
 import { NavLink } from "react-router-dom"
+import { UserType } from "../../API/API"
 
 type UserSearchedCard = {
     unfollowUser: () => void

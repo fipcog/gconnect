@@ -6,6 +6,7 @@ import { connect } from "react-redux"
 import { ProfileType, setProfile } from './../../reducers/profileReducer';
 import { RouteComponentProps, withRouter } from "react-router-dom"
 import axios from "axios"
+import { appAPI } from "../../API/API"
 
 
 
@@ -25,7 +26,7 @@ type PropsType = RouteComponentProps<UrlParams> & MapStateToProps & MapDispatchT
 
 class ProfileContainer extends React.Component<PropsType> {
     componentDidMount(): void {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.match.params.userId}`)
+        appAPI.getProfile(this.props.match.params.userId)
         .then((res) => this.props.setProfile(res.data))
     }
 

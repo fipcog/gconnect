@@ -5,25 +5,8 @@ import { AppRootStoreType } from "../../redux/store";
 import React from "react";
 import axios from "axios";
 import { Preloader } from "../../components/preloader/Preloader";
+import { ResponseUsersType, UserType } from "../../API/API";
 
-export type UserType = {
-    id: string
-    photos: {
-        small: string | null
-        large: string | null
-    }
-    followed: boolean
-    status: string
-    name: string
-    uniqueUrlName?: string
-    // location: {city: string, country: string}
-}
-
-type ResponseType = {
-    items: UserType[]
-    totalCount: number
-    error: string
-}
 
 export type UsersType = UserType[]
 type mapStateToPropsType = {
@@ -48,7 +31,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
 
     componentDidMount(): void {
         this.props.setIsLoading(true)
-        axios.get<ResponseType>(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}`)
+        axios.get<ResponseUsersType>(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}`)
         .then((res) => {
             this.props.setUsers(res.data.items)
             this.props.setAmountOfUsers(res.data.totalCount)
@@ -58,7 +41,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
     changePage = (pageNum: number) => {
         this.props.setIsLoading(true)
         this.props.setCurrentPage(pageNum)
-        axios.get<ResponseType>(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNum}`)
+        axios.get<ResponseUsersType>(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNum}`)
         .then((res) => {
             this.props.setUsers(res.data.items)
             this.props.setAmountOfUsers(res.data.totalCount)
