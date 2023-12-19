@@ -5,7 +5,7 @@ import { AppRootStoreType } from "../../redux/store";
 import React from "react";
 import axios from "axios";
 import { Preloader } from "../../components/preloader/Preloader";
-import { ResponseUsersType, UserType } from "../../API/API";
+import { ResponseUsersType, UserType, appAPI } from "../../API/API";
 
 
 export type UsersType = UserType[]
@@ -48,6 +48,14 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
         }).finally(()=> this.props.setIsLoading(false))
     }
 
+    followUser = (userId: string) => {
+        appAPI.followUser(userId).then(res => this.props.followUser(userId))
+    }
+
+    unfollowUser = (userId: string) => {
+        appAPI.unfollowUser(userId).then(res => this.props.unfollowUser(userId))
+    }
+
     render(): React.ReactNode {
         return <>
                 <Users 
@@ -56,8 +64,8 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                     currentPage={this.props.currentPage}
                     pageSize={this.props.pageSize}
                     changePage={this.changePage}
-                    followUser={this.props.followUser}
-                    unfollowUser={this.props.unfollowUser}
+                    followUser={this.followUser}
+                    unfollowUser={this.unfollowUser}
                     isLoading={this.props.isLoading}
                     />
 

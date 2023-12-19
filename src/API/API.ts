@@ -14,6 +14,12 @@ export const appAPI = {
     },
     getAuthData() {
         return instance.get<AuthResponseType>('/auth/me')
+    },
+    followUser(userId: string) {
+        return instance.post(`/follow/${userId}`)
+    },
+    unfollowUser(userId: string) {
+        return instance.delete(`/follow/${userId}`)
     }
 }
 
