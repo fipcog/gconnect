@@ -11,6 +11,9 @@ export const appAPI = {
     },
     getProfile(userId: string) {
         return instance.get<ResponseProfileType>(`/profile/${userId}`)
+    },
+    getAuthData() {
+        return instance.get<AuthResponseType>('/auth/me')
     }
 }
 
@@ -53,4 +56,16 @@ export type ResponseUsersType = {
     items: UserType[]
     totalCount: number
     error: string
+}
+
+export type AuthDataType= {
+    id: number
+    email: string 
+    login: string 
+}
+
+type AuthResponseType = {
+    data: AuthDataType
+    resultCode: number
+    messages: string[]
 }

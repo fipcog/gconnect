@@ -31,8 +31,8 @@ export const UserSearchedCard: React.FC<UserSearchedCard> = (props) => {
                     <S.UserData>{user.status}</S.UserData>
                 </FlexWrapper>
                 <FlexWrapper direction="column" justify="center" gap="10px" width="50%">
-                    <S.UserDataLocation>Here must be a city</S.UserDataLocation>
-                    <S.UserDataLocation>Here must be a country</S.UserDataLocation>
+                    <S.UserDataLocation>City is not specified</S.UserDataLocation>
+                    <S.UserDataLocation>Country is not specified</S.UserDataLocation>
                 </FlexWrapper>
             </S.UserDataWrapper>
         </S.User>

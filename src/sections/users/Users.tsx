@@ -1,10 +1,10 @@
+import { UserType } from "../../API/API"
 import { Button } from "../../components/Button"
 import { FlexWrapper } from "../../components/FlexWrapper"
 import { Pagination } from "../../components/pagination/Pagination"
 import { Preloader } from "../../components/preloader/Preloader"
 import { UserImage } from "../../components/userImage/UserImage"
 import { UserSearchedCard } from "../../components/user_searched_card/UserSearchedCard"
-import { UserType } from "./UsersContainer"
 import { S } from "./UsersStyles"
 
 

@@ -18,6 +18,7 @@ export const Main: React.FC = () => {
             <Route path={'/music'} render={ () => <Music/>}/>
             <Route path={'/find_users'} render={ () => <UsersContainer/>}/>
             <Route path={'/settings'} render={ () => <Settings/>}/>
+            <Route path={'/login'} render={() => <div>login</div>}/>
         </S.Main>
     )
 }
