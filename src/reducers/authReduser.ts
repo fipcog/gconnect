@@ -1,4 +1,5 @@
-import { AuthDataType } from "../API/API"
+import { AuthDataType, appAPI } from "../API/API"
+import { ThunkCreatorType } from "../redux/store"
 
 export type InitialStateAuth = {
     id: number | null
@@ -24,12 +25,20 @@ export const authReducer = (state = initialState, action: masterActionType): Ini
 
 type masterActionType = SetAuthData
 
-type SetAuthData = ReturnType<typeof setAuthData>
-export const setAuthData = (data: AuthDataType) => {
+type SetAuthData = ReturnType<typeof setAuthDataAC>
+export const setAuthDataAC = (data: AuthDataType) => {
     return {
         type: 'SET_AUTH_DATA',
         payload: {
             data
         }
     } as const
+}
+
+export const getAuthData = (): ThunkCreatorType => {
+    return (dispatch) => {
+        appAPI.getAuthData().then((res) => {
+            dispatch(setAuthDataAC(res.data.data))
+        })
+    }
 }

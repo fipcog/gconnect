@@ -14,7 +14,7 @@ export const Profile: React.FC<PropsType> = (props) => {
         return (
             <S.Profile>
                 <S.ProfileImage src={props.profile.photos.large ? props.profile.photos.large : profileimage} />
-                <UserProfile />
+                <UserProfile profile={props.profile}/>
                 <Posts />
             </S.Profile>
         )

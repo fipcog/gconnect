@@ -6,7 +6,7 @@ const instance = axios.create({
 })
 
 export const appAPI = {
-    getUsers(pageSize: number = 10, pageNum: number = 1) {
+    getUsers(pageNum: number = 1, pageSize: number = 10) {
         return instance.get<ResponseUsersType>(`/users?count=${pageSize}&page=${pageNum}`)
     },
     getProfile(userId: string) {

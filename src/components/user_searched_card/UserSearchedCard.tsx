@@ -10,19 +10,21 @@ type UserSearchedCard = {
     unfollowUser: () => void
     followUser: () => void
     user: UserType
+    loadingInProgressUsers: string[]
 }
 export const UserSearchedCard: React.FC<UserSearchedCard> = (props) => {
     const {unfollowUser,
             followUser,
+            loadingInProgressUsers,
             user} = props
     return (
         <S.User>
             <FlexWrapper direction="column" align="center" gap="10px" width="auto">
                 <NavLink to={'/profile/'+ user.id}><UserImage image={user.photos.small || defaultAvatar} alt={`user ${user.name} avatar`} /></NavLink>
                 {user.followed ?
-                    <Button onClick={unfollowUser}>Unfollow</Button>
+                    <Button onClick={unfollowUser} disabled={loadingInProgressUsers.some(id => id === user.id)}>Unfollow</Button>
                     :
-                    <Button onClick={followUser}>Follow</Button>
+                    <Button onClick={followUser} disabled={loadingInProgressUsers.some(id => id === user.id)}>Follow</Button>
                 }
             </FlexWrapper>
             <S.UserDataWrapper>

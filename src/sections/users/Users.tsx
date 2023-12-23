@@ -14,6 +14,7 @@ type UsersPropsType = {
     currentPage: number
     pageSize: number
     isLoading: boolean
+    loadingInProgressUsers: string[]
     changePage: (pageNum: number) => void
     followUser: (userId: string) => void
     unfollowUser: (userId: string) => void
@@ -24,6 +25,7 @@ export const Users: React.FC<UsersPropsType> = (props) => {
             amountOfUsers, 
             currentPage, 
             pageSize, 
+            loadingInProgressUsers,
             followUser, 
             unfollowUser, 
             changePage } = props
@@ -39,6 +41,7 @@ export const Users: React.FC<UsersPropsType> = (props) => {
                     return (
                         <UserSearchedCard key={u.id}
                             user={u}
+                            loadingInProgressUsers={loadingInProgressUsers}
                             followUser={() => followUser(u.id)}
                             unfollowUser={() => unfollowUser(u.id)} />
                     )

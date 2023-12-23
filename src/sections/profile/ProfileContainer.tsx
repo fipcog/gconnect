@@ -3,7 +3,7 @@ import { ReactNode } from "react"
 import { Profile } from "./Profile"
 import { AppRootStoreType } from "../../redux/store"
 import { connect } from "react-redux"
-import { ProfileType, setProfile } from './../../reducers/profileReducer';
+import { ProfileType, getProfile, setProfile } from './../../reducers/profileReducer';
 import { RouteComponentProps, withRouter } from "react-router-dom"
 import axios from "axios"
 import { appAPI } from "../../API/API"
@@ -15,7 +15,7 @@ type MapStateToProps = {
 }
 
 type MapDispatchToProps = {
-    setProfile: (profile: ProfileType) => void
+    getProfile: (userId: string) => void
 }
 
 type UrlParams = {
@@ -26,8 +26,7 @@ type PropsType = RouteComponentProps<UrlParams> & MapStateToProps & MapDispatchT
 
 class ProfileContainer extends React.Component<PropsType> {
     componentDidMount(): void {
-        appAPI.getProfile(this.props.match.params.userId)
-        .then((res) => this.props.setProfile(res.data))
+        this.props.getProfile(this.props.match.params.userId)
     }
 
     render(): ReactNode {
@@ -43,4 +42,4 @@ const mapStateToProps = (state: AppRootStoreType) => {
 
 const WithUrlDataProfileContainer = withRouter(ProfileContainer)
 
-export default connect<MapStateToProps, MapDispatchToProps, {}, AppRootStoreType>(mapStateToProps, {setProfile})(WithUrlDataProfileContainer)
+export default connect<MapStateToProps, MapDispatchToProps, {}, AppRootStoreType>(mapStateToProps, {getProfile})(WithUrlDataProfileContainer)

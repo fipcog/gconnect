@@ -19,4 +19,9 @@ export const Button = styled.button`
     &:active {
         transform: translateY(1px);
     }
+
+    &:disabled {
+        background-color: #d3d3d3;
+        color: #333333;
+    }
 `

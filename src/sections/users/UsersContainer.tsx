@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
 import { Users } from "./Users";
-import { followUserAC, setCurrentPageAC, setIsLoadingAC, setTotalAmountOfUsersAC, setUsersAC, unfollowUserAC } from "../../reducers/usersReducer";
+import { followUser, unfollowUser } from "../../reducers/usersReducer";
 import { AppRootStoreType } from "../../redux/store";
 import React from "react";
-import axios from "axios";
-import { Preloader } from "../../components/preloader/Preloader";
-import { ResponseUsersType, UserType, appAPI } from "../../API/API";
+import {  UserType } from "../../API/API";
+import { getUsers } from './../../reducers/usersReducer';
 
 
 export type UsersType = UserType[]
@@ -15,14 +14,12 @@ type mapStateToPropsType = {
     currentPage: number
     totalAmount: number
     isLoading: boolean
+    loadingInProgressUsers: string[]
 }
 type mapDispatchToPropsType = {
     followUser: (userId: string) => void
     unfollowUser: (userId: string) => void
-    setUsers: (users: UsersType) => void
-    setCurrentPage: (pageNum: number) => void
-    setAmountOfUsers: (amount: number) => void
-    setIsLoading: (isLoading: boolean) => void
+    getUsers: (pageNum?: number, pageSize?: number) => void
 }
 type OwnUsersContainerProps = {}
 export type UsersContainerPropsType = mapStateToPropsType & mapDispatchToPropsType & OwnUsersContainerProps
@@ -30,30 +27,19 @@ export type UsersContainerPropsType = mapStateToPropsType & mapDispatchToPropsTy
 class UsersContainer extends React.Component<UsersContainerPropsType> {
 
     componentDidMount(): void {
-        this.props.setIsLoading(true)
-        axios.get<ResponseUsersType>(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}`)
-        .then((res) => {
-            this.props.setUsers(res.data.items)
-            this.props.setAmountOfUsers(res.data.totalCount)
-        }).finally(()=> this.props.setIsLoading(false))
+        this.props.getUsers()
     }
 
     changePage = (pageNum: number) => {
-        this.props.setIsLoading(true)
-        this.props.setCurrentPage(pageNum)
-        axios.get<ResponseUsersType>(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNum}`)
-        .then((res) => {
-            this.props.setUsers(res.data.items)
-            this.props.setAmountOfUsers(res.data.totalCount)
-        }).finally(()=> this.props.setIsLoading(false))
+        this.props.getUsers(pageNum)
     }
 
     followUser = (userId: string) => {
-        appAPI.followUser(userId).then(res => this.props.followUser(userId))
+        this.props.followUser(userId)
     }
 
     unfollowUser = (userId: string) => {
-        appAPI.unfollowUser(userId).then(res => this.props.unfollowUser(userId))
+        this.props.unfollowUser(userId)
     }
 
     render(): React.ReactNode {
@@ -67,6 +53,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                     followUser={this.followUser}
                     unfollowUser={this.unfollowUser}
                     isLoading={this.props.isLoading}
+                    loadingInProgressUsers={this.props.loadingInProgressUsers}
                     />
 
             </>
@@ -80,18 +67,12 @@ const mapStateToProps = (state: AppRootStoreType) => {
         currentPage: state.findUsers.currentPage,
         totalAmount: state.findUsers.totalAmountOfUsers,
         isLoading: state.findUsers.isLoading,
+        loadingInProgressUsers: state.findUsers.loadingInProgressUsers
     }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        followUser: (userId: string) => dispatch(followUserAC(userId)),
-        unfollowUser: (userId: string) => dispatch(unfollowUserAC(userId)),
-        setUsers: (users: UsersType) => dispatch(setUsersAC(users)),
-        setCurrentPage: (pageNum: number) => dispatch(setCurrentPageAC(pageNum)),
-        setAmountOfUsers: (amount: number) => dispatch(setTotalAmountOfUsersAC(amount)),
-        setIsLoading: (isLoading: boolean) => dispatch(setIsLoadingAC(isLoading))
-    }
-}
-
-export default connect<mapStateToPropsType, mapDispatchToPropsType, OwnUsersContainerProps, AppRootStoreType>(mapStateToProps, mapDispatchToProps)(UsersContainer)
+export default connect<mapStateToPropsType, mapDispatchToPropsType, OwnUsersContainerProps, AppRootStoreType>(mapStateToProps, {
+    getUsers, 
+    followUser, 
+    unfollowUser
+})(UsersContainer)

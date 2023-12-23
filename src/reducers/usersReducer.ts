@@ -1,3 +1,5 @@
+import { appAPI } from "../API/API"
+import { ThunkCreatorType } from "../redux/store"
 import { UsersType } from "../sections/users/UsersContainer"
 
 
@@ -7,13 +9,15 @@ export type InitialStateUsers = {
     totalAmountOfUsers: number
     currentPage: number
     isLoading: boolean
+    loadingInProgressUsers: string[]
 }
 const initialState: InitialStateUsers = {
     users: [],
     maxAmountOnPage: 5,
     totalAmountOfUsers: 0,
     currentPage: 1,
-    isLoading: false
+    isLoading: false,
+    loadingInProgressUsers: []
 }
 
 export const usersReducer = (state = initialState, action: MainActionType): InitialStateUsers => {
@@ -30,12 +34,23 @@ export const usersReducer = (state = initialState, action: MainActionType): Init
             return {...state, totalAmountOfUsers: action.payload.amount}
         case 'SET_IS_LOADING':
             return {...state, isLoading: action.payload.isLoading}
+        case 'ADD_LOADING_IN_PROGRESS': 
+            return {...state, loadingInProgressUsers: [...state.loadingInProgressUsers, action.payload.userId]}
+        case 'REMOVE_LOADING_IN_PROGRESS':
+            return {...state, loadingInProgressUsers: state.loadingInProgressUsers.filter(id => id !== action.payload.userId)}
         default:
             return state
     }
 }
 
-type MainActionType = FollowUser | UnfollowUser | setUsers | SetCurrentPage | SetTotalAmountOfUsers | SetIsLoading
+type MainActionType = FollowUser 
+                                | UnfollowUser 
+                                | setUsers 
+                                | SetCurrentPage 
+                                | SetTotalAmountOfUsers 
+                                | SetIsLoading
+                                | AddLoadingInProgress
+                                | RemoveLoadingInProgress
 
 type FollowUser = ReturnType<typeof followUserAC>
 export const followUserAC = (userId: string) => {
@@ -95,4 +110,50 @@ export const setIsLoadingAC = (isLoading: boolean) => {
             isLoading
         }
     }   as const
+}
+
+type AddLoadingInProgress = ReturnType<typeof addLoadingInProgressAC>
+const addLoadingInProgressAC = (userId: string) => {
+    return {
+        type: 'ADD_LOADING_IN_PROGRESS',
+        payload: {userId}
+    }   as const
+}
+type RemoveLoadingInProgress = ReturnType<typeof removeLoadingInProgressAC>
+const removeLoadingInProgressAC = (userId: string) => {
+    return {
+        type: 'REMOVE_LOADING_IN_PROGRESS',
+        payload: {userId}
+    }   as const
+}
+
+
+export const getUsers = (pageNum: number = 1, pageSize: number = 10): ThunkCreatorType => {
+    return (dispatch) => {
+        dispatch(setIsLoadingAC(true))
+        appAPI.getUsers(pageNum, pageSize)
+        .then((res) => {
+            dispatch(setUsersAC(res.data.items))
+            dispatch(setTotalAmountOfUsersAC(res.data.totalCount))
+            dispatch(setCurrentPageAC(pageNum))
+        }).finally(()=> dispatch(setIsLoadingAC(false)))
+    }
+}
+
+export const followUser = (userId: string): ThunkCreatorType => {
+    return (dispatch) => {
+        dispatch(addLoadingInProgressAC(userId))
+        appAPI.followUser(userId)
+            .then(res => dispatch(followUserAC(userId)))
+            .finally(()=> dispatch(removeLoadingInProgressAC(userId)))
+    }
+}
+
+export const unfollowUser = (userId: string): ThunkCreatorType => {
+    return (dispatch) => {
+        dispatch(addLoadingInProgressAC(userId))
+        appAPI.unfollowUser(userId)
+            .then(res => dispatch(unfollowUserAC(userId)))
+            .finally(()=> dispatch(removeLoadingInProgressAC(userId)))
+    }
 }

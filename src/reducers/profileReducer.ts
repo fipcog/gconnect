@@ -1,5 +1,6 @@
 import { v1 } from "uuid"
-import { ResponseProfileType } from "../API/API"
+import { ResponseProfileType, appAPI } from "../API/API"
+import { ThunkCreatorType } from "../redux/store"
 
 export type UserPost = { id: string, post: string }
 export type UserPosts = UserPost[]
@@ -61,4 +62,11 @@ export const setProfile = (profile: ProfileType) => {
             profile
         }
     } as const
+}
+
+export const getProfile = (userId: string): ThunkCreatorType => {
+    return (dispatch) => {
+        appAPI.getProfile(userId)
+        .then((res) => dispatch(setProfile(res.data)))
+    }
 }
