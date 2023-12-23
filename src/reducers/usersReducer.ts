@@ -113,14 +113,14 @@ export const setIsLoadingAC = (isLoading: boolean) => {
 }
 
 type AddLoadingInProgress = ReturnType<typeof addLoadingInProgressAC>
-const addLoadingInProgressAC = (userId: string) => {
+export const addLoadingInProgressAC = (userId: string) => {
     return {
         type: 'ADD_LOADING_IN_PROGRESS',
         payload: {userId}
     }   as const
 }
 type RemoveLoadingInProgress = ReturnType<typeof removeLoadingInProgressAC>
-const removeLoadingInProgressAC = (userId: string) => {
+export const removeLoadingInProgressAC = (userId: string) => {
     return {
         type: 'REMOVE_LOADING_IN_PROGRESS',
         payload: {userId}

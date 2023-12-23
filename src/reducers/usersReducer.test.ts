@@ -1,4 +1,4 @@
-import { InitialStateUsers, setCurrentPageAC, setTotalAmountOfUsersAC, followUserAC, setUsersAC, unfollowUserAC, usersReducer, setIsLoadingAC } from "./usersReducer"
+import { InitialStateUsers, setCurrentPageAC, setTotalAmountOfUsersAC, followUserAC, setUsersAC, unfollowUserAC, usersReducer, setIsLoadingAC, addLoadingInProgressAC, removeLoadingInProgressAC } from "./usersReducer"
 
 let initial: InitialStateUsers
 
@@ -13,7 +13,8 @@ beforeEach(()=> {
         maxAmountOnPage: 5,
         totalAmountOfUsers: 0,
         currentPage: 1,
-        isLoading: false
+        isLoading: false,
+        loadingInProgressUsers: ['id_1']
     }
 })
 
@@ -52,4 +53,14 @@ test('setting isLoading', ()=>{
     let result = usersReducer(initial, setIsLoadingAC(true))
 
     expect(result.isLoading).toBe(true)
+})
+test('add id in loadingInProgressUsers ', ()=>{
+    let result = usersReducer(initial, addLoadingInProgressAC('sdfdsmfsdn'))
+
+    expect(result.loadingInProgressUsers.length).toBe(2)
+})
+test('remove id from loadingInProgressUsers ', ()=>{
+    let result = usersReducer(initial, removeLoadingInProgressAC('id_1'))
+
+    expect(result.loadingInProgressUsers.length).toBe(0)
 })
