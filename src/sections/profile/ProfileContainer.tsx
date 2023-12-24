@@ -3,10 +3,9 @@ import { ReactNode } from "react"
 import { Profile } from "./Profile"
 import { AppRootStoreType } from "../../redux/store"
 import { connect } from "react-redux"
-import { ProfileType, getProfile, setProfile } from './../../reducers/profileReducer';
+import { ProfileType, getProfile } from './../../reducers/profileReducer';
 import { RouteComponentProps, withRouter } from "react-router-dom"
-import axios from "axios"
-import { appAPI } from "../../API/API"
+import { withRedirect } from "../../hoc/withRedirect"
 
 
 
@@ -34,12 +33,14 @@ class ProfileContainer extends React.Component<PropsType> {
     }
 }
 
+const WithRedirectProfileComponent = withRedirect(ProfileContainer) 
+
 const mapStateToProps = (state: AppRootStoreType) => {
     return {
-        profile: state.profile.profile
+        profile: state.profile.profile,
     }
 }
 
-const WithUrlDataProfileContainer = withRouter(ProfileContainer)
+const WithUrlDataProfileContainer = withRouter(WithRedirectProfileComponent)
 
 export default connect<MapStateToProps, MapDispatchToProps, {}, AppRootStoreType>(mapStateToProps, {getProfile})(WithUrlDataProfileContainer)

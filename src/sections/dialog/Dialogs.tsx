@@ -7,6 +7,7 @@ import { FlexWrapper } from "../../components/FlexWrapper";
 import { connect } from "react-redux";
 import { AppRootStoreType } from "../../redux/store";
 import { Messages, UserContacts, addMessageAC } from '../../reducers/dialogsReducer'
+import { withRedirect } from './../../hoc/withRedirect';
 
 type MapStateToProps = {
     userContacts: UserContacts
@@ -68,4 +69,6 @@ const mapDispatchToProps = (dispatch: any): MapDispatchToProps => {
     }
 }
 
-export default connect<MapStateToProps, MapDispatchToProps, OwnProps, AppRootStoreType>(mapStateToProps, mapDispatchToProps)(Dialogs)
+const withRedirectDialogs = withRedirect(Dialogs)
+
+export default connect<MapStateToProps, MapDispatchToProps, OwnProps, AppRootStoreType>(mapStateToProps, mapDispatchToProps)(withRedirectDialogs)

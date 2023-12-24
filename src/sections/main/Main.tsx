@@ -8,6 +8,7 @@ import { Music } from '../music/Music';
 import { Settings } from '../settings/Settings';
 import UsersContainer from '../users/UsersContainer';
 import ProfileContainer from '../profile/ProfileContainer';
+import { Login } from '../login/Login';
 
 export const Main: React.FC = () => {
     return(
@@ -18,7 +19,7 @@ export const Main: React.FC = () => {
             <Route path={'/music'} render={ () => <Music/>}/>
             <Route path={'/find_users'} render={ () => <UsersContainer/>}/>
             <Route path={'/settings'} render={ () => <Settings/>}/>
-            <Route path={'/login'} render={() => <div>login</div>}/>
+            <Route path={'/login'} render={() => <Login/>}/>
         </S.Main>
     )
 }
