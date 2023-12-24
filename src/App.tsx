@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import { SiteWrapper } from './components/SiteWrapper';
 import { FlexWrapper } from './components/FlexWrapper';
-import { Sidebar } from './sections/sidebar/Sidebar';
 import { Main } from './sections/main/Main';
 import HeaderContainer from './sections/header/HeaderContainer';
+import SidebarContainer from './sections/sidebar/SidebarContainer';
 
 
 
@@ -13,7 +13,7 @@ function App() {
     <SiteWrapper>
         <HeaderContainer/>
         <FlexWrapper width='100%'>
-          <Sidebar/>
+          <SidebarContainer/>
           <Main />
         </FlexWrapper>
     </SiteWrapper>

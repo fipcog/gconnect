@@ -26,6 +26,7 @@ type PropsType = RouteComponentProps<UrlParams> & MapStateToProps & MapDispatchT
 class ProfileContainer extends React.Component<PropsType> {
     componentDidMount(): void {
         this.props.getProfile(this.props.match.params.userId)
+        
     }
 
     render(): ReactNode {
@@ -37,7 +38,7 @@ const WithRedirectProfileComponent = withRedirect(ProfileContainer)
 
 const mapStateToProps = (state: AppRootStoreType) => {
     return {
-        profile: state.profile.profile,
+        profile: state.profile.profile
     }
 }
 
