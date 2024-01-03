@@ -5,6 +5,7 @@ import userimage from '../../assets/userimage.jpg';
 import { FlexWrapper } from '../../components/FlexWrapper';
 import { UserImage } from '../../components/userImage/UserImage';
 import { ProfileType } from '../../reducers/profileReducer';
+import ProfileStatusContainer from '../profileStatus/ProfileStatusContainer';
 
 type PropsType = {
     profile: ProfileType
@@ -16,6 +17,7 @@ export const UserProfile: React.FC<PropsType> = (props) => {
             <UserImage width='150px' height='150px' image={userimage} margin='0 50px 0 0' />
             <FlexWrapper direction='column' width='auto'>
                 <S.UserName>{props.profile?.fullName}</S.UserName>
+                <ProfileStatusContainer />
                 <span>Date of birth: Date</span>
                 <S.UserAddress>
                     <span>City: City</span>

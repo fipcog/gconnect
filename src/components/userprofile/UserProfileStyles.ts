@@ -1,8 +1,9 @@
 import styled from "styled-components"
 import { theme } from "../../style/Theme"
+import ProfileStatusContainer from "../profileStatus/ProfileStatusContainer"
 
 const UserName = styled.h1`
-    margin-bottom: 40px;
+    margin-bottom: 5px;
 `
 
 const UserAddress = styled.address`
