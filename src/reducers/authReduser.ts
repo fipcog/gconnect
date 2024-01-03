@@ -1,4 +1,4 @@
-import { AuthDataType, appAPI } from "../API/API"
+import { AuthDataType, appAPI, profileAPI } from "../API/API"
 import { ThunkCreatorType } from "../redux/store"
 import { ProfileType } from "./profileReducer"
 
@@ -60,6 +60,6 @@ export const getAuthData = (): ThunkCreatorType => {
 
 export const getAuthProfile = (id: number): ThunkCreatorType => {
     return (dispatch) => {
-        appAPI.getProfile(String(id)).then((res) => dispatch(setAuthUserProfileAC(res.data)))
+        profileAPI.getProfile(String(id)).then((res) => dispatch(setAuthUserProfileAC(res.data)))
     }
 }

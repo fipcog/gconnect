@@ -6,14 +6,26 @@ const instance = axios.create({
 })
 
 export const appAPI = {
-    getUsers(pageNum: number = 1, pageSize: number = 10) {
-        return instance.get<ResponseUsersType>(`/users?count=${pageSize}&page=${pageNum}`)
+    getAuthData() {
+        return instance.get<AuthResponseType>('/auth/me')
     },
+}
+
+export const profileAPI = {
     getProfile(userId: string) {
         return instance.get<ResponseProfileType>(`/profile/${userId}`)
     },
-    getAuthData() {
-        return instance.get<AuthResponseType>('/auth/me')
+    getProfileStatus(userId: string) {
+        return instance.get<string>(`/profile/status/${userId}`)
+    },
+    setProfileStatus(status: string) {
+        return instance.put<ResponseType>(`/profile/status`, { status })
+    }
+}
+
+export const usersAPI = {
+    getUsers(pageNum: number = 1, pageSize: number = 10) {
+        return instance.get<ResponseUsersType>(`/users?count=${pageSize}&page=${pageNum}`)
     },
     followUser(userId: string) {
         return instance.post(`/follow/${userId}`)
@@ -75,3 +87,9 @@ type AuthResponseType = {
     resultCode: number
     messages: string[]
 }
+type ResponseType<T = {}> = {
+    data: T
+    resultCode: number
+    messages: string[]
+}
+

@@ -1,4 +1,4 @@
-import { appAPI } from "../API/API"
+import { appAPI, profileAPI, usersAPI } from "../API/API"
 import { ThunkCreatorType } from "../redux/store"
 import { UsersType } from "../sections/users/UsersContainer"
 
@@ -131,7 +131,7 @@ export const removeLoadingInProgressAC = (userId: string) => {
 export const getUsers = (pageNum: number = 1, pageSize: number = 10): ThunkCreatorType => {
     return (dispatch) => {
         dispatch(setIsLoadingAC(true))
-        appAPI.getUsers(pageNum, pageSize)
+        usersAPI.getUsers(pageNum, pageSize)
         .then((res) => {
             dispatch(setUsersAC(res.data.items))
             dispatch(setTotalAmountOfUsersAC(res.data.totalCount))
@@ -143,7 +143,7 @@ export const getUsers = (pageNum: number = 1, pageSize: number = 10): ThunkCreat
 export const followUser = (userId: string): ThunkCreatorType => {
     return (dispatch) => {
         dispatch(addLoadingInProgressAC(userId))
-        appAPI.followUser(userId)
+        usersAPI.followUser(userId)
             .then(res => dispatch(followUserAC(userId)))
             .finally(()=> dispatch(removeLoadingInProgressAC(userId)))
     }
@@ -152,7 +152,7 @@ export const followUser = (userId: string): ThunkCreatorType => {
 export const unfollowUser = (userId: string): ThunkCreatorType => {
     return (dispatch) => {
         dispatch(addLoadingInProgressAC(userId))
-        appAPI.unfollowUser(userId)
+        usersAPI.unfollowUser(userId)
             .then(res => dispatch(unfollowUserAC(userId)))
             .finally(()=> dispatch(removeLoadingInProgressAC(userId)))
     }

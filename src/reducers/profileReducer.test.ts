@@ -23,7 +23,8 @@ beforeEach(() => {
                 post: 'nobody loves me'
             },
         ],
-        profile: null
+        profile: null,
+        profileStatus: ''
     }
 })
 
