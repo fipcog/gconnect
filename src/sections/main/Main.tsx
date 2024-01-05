@@ -14,7 +14,7 @@ import { Error404 } from '../../components/Error404';
 export const Main: React.FC = () => {
     return(
         <S.Main>
-            <Route path={'/'} render={ () => <Redirect to={'/find_users'}/> }/>
+            {/* <Route path={'/'} render={ () => <Redirect to={'/find_users'}/> }/> */}
             <Route path={'/profile/:userId'} render={ () => <ProfileContainer/> }/>
             <Route path={'/dialogs'} render={ () => <Dialogs/> }/>
             <Route path={'/news'} render={ () => <News/>}/>
