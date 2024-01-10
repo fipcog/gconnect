@@ -10,6 +10,7 @@ import UsersContainer from '../users/UsersContainer';
 import ProfileContainer from '../profile/ProfileContainer';
 import { Login } from '../login/Login';
 import { Error404 } from '../../components/Error404';
+import LoginContainer from '../login/LoginContainer';
 
 export const Main: React.FC = () => {
     return(
@@ -21,7 +22,7 @@ export const Main: React.FC = () => {
             <Route path={'/music'} render={ () => <Music/>}/>
             <Route path={'/find_users'} render={ () => <UsersContainer/>}/>
             <Route path={'/settings'} render={ () => <Settings/>}/>
-            <Route path={'/login'} render={() => <Login/>}/>
+            <Route path={'/login'} render={() => <LoginContainer/>}/>
             <Route path={'/404'} render={() => <Error404/>}/>
             {/* <Route path={'/*'} render={() => <Redirect to={'/404'}/>}/> */}
         </S.Main>

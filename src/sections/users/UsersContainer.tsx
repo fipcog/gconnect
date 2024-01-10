@@ -5,6 +5,7 @@ import { AppRootStoreType } from "../../redux/store";
 import React from "react";
 import {  UserType } from "../../API/API";
 import { getUsers } from './../../reducers/usersReducer';
+import { withRedirect } from "../../hoc/withRedirect";
 
 
 export type UsersType = UserType[]
@@ -71,8 +72,10 @@ const mapStateToProps = (state: AppRootStoreType) => {
     }
 }
 
+const WithRedirectUsers = withRedirect(UsersContainer)
+
 export default connect<mapStateToPropsType, mapDispatchToPropsType, OwnUsersContainerProps, AppRootStoreType>(mapStateToProps, {
     getUsers, 
     followUser, 
     unfollowUser
-})(UsersContainer)
+})(WithRedirectUsers)

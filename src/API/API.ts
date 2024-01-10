@@ -9,6 +9,12 @@ export const appAPI = {
     getAuthData() {
         return instance.get<AuthResponseType>('/auth/me')
     },
+    login(email: string, password: string, rememberMe: boolean = false) {
+        return instance.post<ResponseType<{userId: number}>>(`/auth/login`, {email, password, rememberMe})
+    },
+    logout() {
+        return instance.delete<ResponseType>(`/auth/login`)
+    }
 }
 
 export const profileAPI = {

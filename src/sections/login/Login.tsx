@@ -1,12 +1,17 @@
 import { FC } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Redirect } from "react-router-dom";
 
 
 export type LoginValues = {
     email: string
     password: string
-    remember: boolean
+    rememberMe: boolean
+}
+type LoginType = {
+    isLogged: boolean
+    onSubmit: (email: string, password: string, rememberMe: boolean) => void
 }
 
 const validationSchema = Yup.object().shape({
@@ -14,15 +19,15 @@ const validationSchema = Yup.object().shape({
     password: Yup.string().required('Type your password').min(3, 'Password is too short'),
 })
 
-export const Login: FC = () => {
+export const Login: FC<LoginType> = ({onSubmit, isLogged}) => {
     const {handleSubmit, getFieldProps, touched, errors, resetForm} = useFormik<LoginValues>({
         initialValues: {
             email: '',
             password: '',
-            remember: false
+            rememberMe: false
         },
         onSubmit: (values) => {
-            // dispatch(logInTC(values))
+            onSubmit(values.email, values.password, values.rememberMe)
             console.log(values)
             resetForm()
         },
@@ -30,6 +35,7 @@ export const Login: FC = () => {
     })
 
     return <form  onSubmit={handleSubmit} style={{color: 'black'}}>
+        {isLogged && <Redirect to={'/find_users'}/>}
         <h1 style={{color: 'black'}}>Log in</h1>
         <div>
             <p>To log in get registered
@@ -51,7 +57,7 @@ export const Login: FC = () => {
                 {touched.password && errors.password && <span>{errors.password}</span>}
             </div>
             <label>
-                <input type="checkbox" id={'login_form_remember_checkbox'} {...getFieldProps('remember')}/>
+                <input type="checkbox" id={'login_form_remember_checkbox'} {...getFieldProps('rememberMe')}/>
                 Remember me
             </label>
             <button type={'submit'} className={'login_btn'}>Login</button>
