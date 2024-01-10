@@ -1,4 +1,4 @@
-import { addMessageAC, dialogsReducer, InitialStateDialogs } from "./dialogsReducer"
+import { addMessage, dialogsReducer, InitialStateDialogs } from "./dialogsReducer"
 
 let initial: InitialStateDialogs
 
@@ -57,7 +57,7 @@ beforeEach(()=> {
 })
 
 test('adding message', () => {
-    const result = dialogsReducer(initial, addMessageAC('hello!'))
+    const result = dialogsReducer(initial, addMessage('hello!'))
 
     expect(result.messages[result.messages.length - 1].message).toBe('hello!')
 })

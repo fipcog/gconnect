@@ -1,6 +1,6 @@
 import { Button } from "../Button"
 import { FlexWrapper } from "../FlexWrapper"
-import { UserImage } from "../userImage/UserImage"
+import { UserImage } from "../user_Image/UserImage"
 import { S } from "./UserSearchedCardStyles"
 import defaultAvatar from "../../assets/defaultUserAvatarImage.png"
 import { NavLink } from "react-router-dom"

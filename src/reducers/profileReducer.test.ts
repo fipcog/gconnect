@@ -1,4 +1,4 @@
-import { InitialStateProfile, addUserPostAC, profileReducer, setProfile } from "./profileReducer"
+import { InitialStateProfile, addUserPost, profileReducer, setProfile } from "./profileReducer"
 
 
 let initial: InitialStateProfile
@@ -29,7 +29,7 @@ beforeEach(() => {
 })
 
 test('adding message', () => {
-    const result = profileReducer(initial, addUserPostAC('hello!'))
+    const result = profileReducer(initial, addUserPost('hello!'))
 
     expect(result.userPosts[0].post).toBe('hello!')
 })

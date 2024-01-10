@@ -1,9 +1,9 @@
 import React from 'react';
 import { S } from './ProfileStyles';
 import profileimage from '../../assets/wallpaper.jpg';
-import Posts from '../../components/posts/Posts';
-import { UserProfile } from '../../components/userprofile/UserProfile';
+import { UserProfile } from '../../components/user_profile/UserProfile';
 import { ProfileType } from '../../reducers/profileReducer';
+import { Posts } from '../../components/posts/Posts';
 
 type PropsType = {
     profile: ProfileType

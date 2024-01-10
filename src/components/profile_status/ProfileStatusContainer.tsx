@@ -3,7 +3,7 @@ import { ProfileStatus } from "./ProfileStatus";
 import { AppRootStoreType } from "../../redux/store";
 import { connect } from "react-redux";
 import { getProfileStatus } from "../../reducers/profileReducer";
-import { changeProfileStatus } from './../../reducers/profileReducer';
+import { changeProfileStatus } from '../../reducers/profileReducer';
 
 
 

@@ -1,6 +1,6 @@
 import  React  from 'react';
 import { S } from './PostStyles';
-import { UserImage } from '../userImage/UserImage';
+import { UserImage } from '../user_Image/UserImage';
 
 type PostPropTypes = {
     image: string

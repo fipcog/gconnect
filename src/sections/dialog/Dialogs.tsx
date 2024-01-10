@@ -1,13 +1,14 @@
 import React from "react";
 import { S } from "./DialogsStyles";
-import { DialogMessage } from "../../components/dialogmessage/DialogMeaasge";
-import { ContactsListItem } from "../../components/contactslistitem/ContactsListItem";
-import { SendMessageTextarea } from "../../components/sendmessagetextarea/SendMessageTextarea";
+import { DialogMessage } from "../../components/dialog_message/DialogMeaasge";
+import { ContactsListItem } from "../../components/contacts_list_item/ContactsListItem";
+import { SendMessageTextarea } from "../../components/send_message_textarea/SendMessageTextarea";
 import { FlexWrapper } from "../../components/FlexWrapper";
 import { connect } from "react-redux";
 import { AppRootStoreType } from "../../redux/store";
-import { Messages, UserContacts, addMessageAC } from '../../reducers/dialogsReducer'
+import { Messages, UserContacts, addMessage } from '../../reducers/dialogsReducer'
 import { withRedirect } from './../../hoc/withRedirect';
+import DialogFormContainer from "../../components/dialogs_form/DialogFormContainer";
 
 type MapStateToProps = {
     userContacts: UserContacts
@@ -15,11 +16,9 @@ type MapStateToProps = {
 }
 
 type MapDispatchToProps = {
-    addMessage: (message: string) => void
 }
 
 type OwnProps = {
-
 }
 
 type PropsType = OwnProps & MapStateToProps & MapDispatchToProps
@@ -49,7 +48,7 @@ class Dialogs extends React.Component<PropsType> {
                     }
                 </S.DialogsDesk>
                 <FlexWrapper justify="flex-end">
-                    <SendMessageTextarea callback={this.props.addMessage} width="70%" padding="30px 70px 0 20px"/>
+                    <DialogFormContainer width="70%" padding="30px 70px 0 20px"/>
                 </FlexWrapper>
             </S.Dialogs>
         )
@@ -63,12 +62,8 @@ const mapStateToProps = (state: AppRootStoreType): MapStateToProps => {
     }
 }
 
-const mapDispatchToProps = (dispatch: any): MapDispatchToProps => {
-    return {
-        addMessage: (message: string) => dispatch(addMessageAC(message))
-    }
-}
+
 
 const withRedirectDialogs = withRedirect(Dialogs)
 
-export default connect<MapStateToProps, MapDispatchToProps, OwnProps, AppRootStoreType>(mapStateToProps, mapDispatchToProps)(withRedirectDialogs)
+export default connect<MapStateToProps, MapDispatchToProps, OwnProps, AppRootStoreType>(mapStateToProps, {})(withRedirectDialogs)

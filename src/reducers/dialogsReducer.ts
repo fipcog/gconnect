@@ -71,8 +71,8 @@ export const dialogsReducer = (state = initialState, action: masterActionType): 
 
 type masterActionType = addMessage
 
-type addMessage = ReturnType<typeof addMessageAC>
-export const addMessageAC = (message: string) => {
+type addMessage = ReturnType<typeof addMessage>
+export const addMessage = (message: string) => {
     const newMessage = { id: v1(), messageAuthor: 'UserName', message }
     return {
         type: 'ADD_NEW_MESSAGE',

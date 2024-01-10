@@ -48,8 +48,8 @@ export const profileReducer = (state = initialState, action: masterActionType): 
 
 type masterActionType = addUserPost | SetProfile | SetProfileStatus
 
-type addUserPost = ReturnType<typeof addUserPostAC>
-export const addUserPostAC = (post: string) => {
+type addUserPost = ReturnType<typeof addUserPost>
+export const addUserPost = (post: string) => {
     const newPost = { id: v1(), post }
     return {
         type: 'ADD_USER_POST',

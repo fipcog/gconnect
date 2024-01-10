@@ -1,6 +1,6 @@
 import React from "react";
 import { S } from "./DialogMessageStyles";
-import { UserImage } from "../userImage/UserImage";
+import { UserImage } from "../user_Image/UserImage";
 import { FlexWrapper } from "../FlexWrapper";
 
 type DialogMessagePropsTypes = {
