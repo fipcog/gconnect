@@ -1,7 +1,9 @@
 import { Dispatch } from "react"
-import { AuthDataType, appAPI, profileAPI } from "../API/API"
+import { AuthDataType, AuthResponseType, appAPI, profileAPI } from "../API/API"
 import { ThunkCreatorType } from "../redux/store"
 import { ProfileType } from "./profileReducer"
+import { AxiosPromise, AxiosResponse } from "axios"
+
 
 export type InitialStateAuth = {
     id: number | null
@@ -60,10 +62,12 @@ export const clearAuthData = () => {
     } as const
 }
 
-export const getAuthData = (): ThunkCreatorType => {
+export const getAuthData = (): ThunkCreatorType<AxiosPromise<AuthResponseType>> => {
     return (dispatch) => {
-        appAPI.getAuthData().then((res) => {
+        return appAPI.getAuthData().then((res)  => {
             dispatch(setAuthDataAC(res.data.data))
+
+            return res
         })
     }
 }

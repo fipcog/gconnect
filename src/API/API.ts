@@ -88,7 +88,7 @@ export type AuthDataType= {
     login: string 
 }
 
-type AuthResponseType = {
+export type AuthResponseType = {
     data: AuthDataType
     resultCode: number
     messages: string[]

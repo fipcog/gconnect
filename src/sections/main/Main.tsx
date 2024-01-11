@@ -15,8 +15,9 @@ import LoginContainer from '../login/LoginContainer';
 export const Main: React.FC = () => {
     return(
         <S.Main>
-            {/* <Route path={'/'} render={ () => <Redirect to={'/find_users'}/> }/> */}
-            <Route path={'/profile/:userId'} render={ () => <ProfileContainer/> }/>
+            <Route path={'/'} render={ () => <Redirect to={'/profile'}/> }/>
+            <Route path={'/profile'} exact={true} render={ () => <ProfileContainer/> }/>
+            <Route path={'/profile/:userId'} exact={true} render={ () => <ProfileContainer/> }/>
             <Route path={'/dialogs'} render={ () => <Dialogs/> }/>
             <Route path={'/news'} render={ () => <News/>}/>
             <Route path={'/music'} render={ () => <Music/>}/>

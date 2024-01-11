@@ -22,15 +22,11 @@ type PropsType = MapStateToProps & MapDispatchToProps
 class HeaderContainer extends React.Component<PropsType> {
 
     componentDidMount(): void {
-        this.props.getAuthData()
+        // this.props.getAuthData()
     }
 
     componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<{}>, snapshot?: any): void {
-        if (this.props.authUserId) this.props.getAuthProfile(this.props.authUserId)
-    }
-
-    login(){
-        this.props.getAuthData()
+        // if (this.props.authUserId) this.props.getAuthProfile(this.props.authUserId)
     }
 
     render(): React.ReactNode {

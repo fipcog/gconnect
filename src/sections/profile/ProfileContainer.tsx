@@ -12,6 +12,8 @@ import { compose } from "redux"
 
 type MapStateToProps = {
     profile: ProfileType
+    authUserId: number | null
+    isLogged: boolean
 }
 
 type MapDispatchToProps = {
@@ -27,18 +29,26 @@ type PropsType = RouteComponentProps<UrlParams> & MapStateToProps & MapDispatchT
 
 class ProfileContainer extends React.Component<PropsType> {
     componentDidMount(): void {
-        this.props.getProfile(this.props.match.params.userId)
-        this.props.getProfileStatus(this.props.match.params.userId)
+        if(this.props.match.params.userId) {
+            this.props.getProfile(this.props.match.params.userId)
+            this.props.getProfileStatus(this.props.match.params.userId)
+        } else if(this.props.authUserId) {
+            this.props.getProfile(String(this.props.authUserId))
+            this.props.getProfileStatus(String(this.props.authUserId))
+        }
     }
 
     render(): ReactNode {
+        if(!this.props.isLogged) return <Redirect to={'/login'} />
         return <Profile profile={this.props.profile}/> 
     }
 }
 
 const mapStateToProps = (state: AppRootStoreType) => {
     return {
-        profile: state.profile.profile
+        profile: state.profile.profile,
+        authUserId: state.authData.id,
+        isLogged: state.authData.isAuth
     }
 }
 

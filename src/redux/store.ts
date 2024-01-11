@@ -5,6 +5,7 @@ import { usersReducer } from "../reducers/usersReducer"
 import { authReducer } from "../reducers/authReduser"
 import thunk, { ThunkAction } from "redux-thunk"
 import { reducer as formReducer } from 'redux-form'
+import { appReducer } from "../reducers/appReducer"
 
 
 const appRootReduser = combineReducers({
@@ -12,7 +13,7 @@ const appRootReduser = combineReducers({
     dialogs: dialogsReducer,
     findUsers: usersReducer,
     authData: authReducer,
-    form: formReducer,
+    app: appReducer
 })
 
 export const store = createStore(appRootReduser, applyMiddleware(thunk))

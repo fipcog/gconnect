@@ -35,7 +35,7 @@ export const Login: FC<LoginType> = ({onSubmit, isLogged}) => {
     })
 
     return <form  onSubmit={handleSubmit} style={{color: 'black'}}>
-        {isLogged && <Redirect to={'/find_users'}/>}
+        {isLogged && <Redirect to={'/profile'}/>}
         <h1 style={{color: 'black'}}>Log in</h1>
         <div>
             <p>To log in get registered
