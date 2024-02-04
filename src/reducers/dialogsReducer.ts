@@ -15,28 +15,33 @@ const initialState: InitialStateDialogs = {
             id: '1',
             messageAuthor: 'Andrew Dow',
             message: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        },
+        {
+            id: '2',
+            messageAuthor: 'Sasha Dow',
+            message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
         }
     ],
     userContacts: [
         {
             id: '1',
-            name: 'Andrew Andrew'
+            name: 'Andrew Dow'
         },
         {
             id: '2',
-            name: 'Dmitry Dmitry'
+            name: 'Dmitry Dow'
         },
         {
             id: '3',
-            name: 'Sasha Sasha'
+            name: 'Sasha Dow'
         },
         {
             id: '4',
-            name: 'Sveta Sveta'
+            name: 'Sveta Dow'
         },
         {
             id: '5',
-            name: 'Victor Victor'
+            name: 'Victor Dow'
         },
     ],
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { S } from './UserProfileStyles';
-import profileimage from '../../assets/wallpaper.jpg';
-import userimage from '../../assets/userimage.jpg';
+import defaultImage from '../../assets/defaultUserAvatarImage.png';
 import { FlexWrapper } from '../FlexWrapper';
 import { UserImage } from '../user_Image/UserImage';
 import { ProfileType } from '../../reducers/profileReducer';
@@ -14,7 +13,7 @@ type PropsType = {
 export const UserProfile: React.FC<PropsType> = (props) => {
     return (
         <FlexWrapper height='200px' margin='10px 0 0 0'>
-            <UserImage width='150px' height='150px' image={userimage} margin='0 50px 0 0' />
+            <UserImage width='150px' height='150px' image={props.profile?.photos.large || defaultImage} margin='0 50px 0 0' />
             <FlexWrapper direction='column' width='auto'>
                 <S.UserName>{props.profile?.fullName}</S.UserName>
                 <ProfileStatusContainer />

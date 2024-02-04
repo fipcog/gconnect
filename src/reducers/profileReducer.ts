@@ -15,19 +15,11 @@ const initialState: InitialStateProfile = {
     userPosts: [
         {
             id: '1',
-            post: 'Why nobody loves me'
+            post: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         },
         {
             id: '2',
-            post: 'Why nobody loves'
-        },
-        {
-            id: '3',
-            post: 'Why loves me'
-        },
-        {
-            id: '4',
-            post: 'nobody loves me'
+            post: 'Duis aute irure dolor in reprehenderit in voluptate.'
         },
     ],
     profile: null,
@@ -38,9 +30,9 @@ export const profileReducer = (state = initialState, action: masterActionType): 
         case 'ADD_USER_POST':
             return { ...state, userPosts: [action.payload.newPost, ...state.userPosts] }
         case 'SET_PROFILE':
-            return {...state, profile: action.payload.profile}
+            return { ...state, profile: action.payload.profile }
         case 'SET_PROFILE_STATUS':
-            return {...state, profileStatus: action.payload.status}
+            return { ...state, profileStatus: action.payload.status }
         default:
             return state
     }
@@ -82,20 +74,20 @@ export const setProfileStatus = (status: string) => {
 export const getProfile = (userId: string): ThunkCreatorType => {
     return (dispatch) => {
         profileAPI.getProfile(userId)
-        .then((res) => dispatch(setProfile(res.data)))
+            .then((res) => dispatch(setProfile(res.data)))
     }
 }
 
-export const getProfileStatus = (userId: string):ThunkCreatorType => {
+export const getProfileStatus = (userId: string): ThunkCreatorType => {
     return (dispatch: Dispatch) => {
         profileAPI.getProfileStatus(userId)
-        .then(res => dispatch(setProfileStatus(res.data)))
+            .then(res => dispatch(setProfileStatus(res.data)))
     }
 }
 
 export const changeProfileStatus = (status: string): ThunkCreatorType => {
     return (dispatch: Dispatch) => {
         profileAPI.setProfileStatus(status)
-        .then(res => {dispatch(setProfileStatus(status))})
+            .then(res => { dispatch(setProfileStatus(status)) })
     }
 }

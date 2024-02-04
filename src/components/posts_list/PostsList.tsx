@@ -1,31 +1,33 @@
-import  React  from 'react';
+import React from 'react';
 import { S } from './PostsListStyles';
-import image from '../../assets/userimage.jpg'
+import defaultImage from '../../assets/defaultUserAvatarImage.png'
 import { Post } from '../post/Post';
 import { connect } from 'react-redux';
 import { AppRootStoreType } from '../../redux/store';
-import { UserPosts } from '../../reducers/profileReducer';
+import { ProfileType, UserPosts } from '../../reducers/profileReducer';
 
 type mapStateToProps = {
     userPosts: UserPosts
 }
 
-type OwnProps = {}
+type OwnProps = {
+    profile: ProfileType
+}
 
 type PropsType = OwnProps & mapStateToProps
 
 class PostsList extends React.Component<PropsType> {
 
     render(): React.ReactNode {
-        return(
+        return (
             <S.PostsList>
-                {this.props.userPosts.map(post => <Post key={post.id} image={image}>{post.post}</Post>)}
+                {this.props.userPosts.map(post => <Post key={post.id} image={this.props.profile?.photos.small || defaultImage}>{post.post}</Post>)}
             </S.PostsList>
         )
     }
 }
 
-const mapStateToProps = (state:AppRootStoreType): mapStateToProps => {
+const mapStateToProps = (state: AppRootStoreType): mapStateToProps => {
     return {
         userPosts: state.profile.userPosts
     }

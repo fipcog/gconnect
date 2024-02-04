@@ -21,8 +21,7 @@ export const UserImage: React.FC<PropTypes> = (props) => {
 }
 
 const StyledUserImage = styled.img`
-    width: 100%;
-    height: 100%;
+    width: inherit;
 
     object-fit: cover;
     border-radius: 50%;
