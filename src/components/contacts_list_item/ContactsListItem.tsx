@@ -4,13 +4,13 @@ import { S } from "./ContactsListItemStyles";
 import { UserImage } from "../user_Image/UserImage";
 
 type ContactsListItemPropsTypes = {
-    image: string
+    image?: string
     id: string
     name: string
 }
 
 
-export const ContactsListItem: React.FC <ContactsListItemPropsTypes> = (props) => {
+export const ContactsListItem: React.FC<ContactsListItemPropsTypes> = (props) => {
     return (
         <S.ContactsListItem>
             <UserImage image={props.image} width="40px" height="40px" />

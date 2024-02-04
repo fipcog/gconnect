@@ -1,10 +1,11 @@
-import  React  from 'react';
+import React from 'react';
 import { FlexWrapper } from '../FlexWrapper';
 import styled from 'styled-components';
 import { theme } from '../../style/Theme';
+import defaultImage from '../../assets/defaultUserAvatarImage.png'
 
 type PropTypes = {
-    image: string
+    image?: string
     width?: string
     height?: string
     margin?: string
@@ -12,18 +13,17 @@ type PropTypes = {
 }
 
 export const UserImage: React.FC<PropTypes> = (props) => {
-    return(
+    return (
         <FlexWrapper width={props.width || '80px'} height={props.height || '80px'} margin={props.margin || '0'}>
-            <StyledUserImage src={props.image} alt={props.alt ? props.alt : 'user avatar'}/>
+            <StyledUserImage src={props.image || defaultImage} alt={props.alt ? props.alt : 'user avatar'} />
         </FlexWrapper>
     )
-}       
+}
 
 const StyledUserImage = styled.img`
     width: 100%;
+    height: 100%;
 
     object-fit: cover;
     border-radius: 50%;
-
-    /* background-color: ${theme.colors.accent}; */
 `
