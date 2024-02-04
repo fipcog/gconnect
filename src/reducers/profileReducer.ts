@@ -33,12 +33,18 @@ export const profileReducer = (state = initialState, action: masterActionType): 
             return { ...state, profile: action.payload.profile }
         case 'SET_PROFILE_STATUS':
             return { ...state, profileStatus: action.payload.status }
+        case 'SET_USERS_IMAGE':
+            if (state.profile) {
+                return { ...state, profile: { ...state.profile, photos: action.payload } }
+            } else {
+                return state
+            }
         default:
             return state
     }
 }
 
-type masterActionType = addUserPost | SetProfile | SetProfileStatus
+type masterActionType = addUserPost | SetProfile | SetProfileStatus | setUserImage
 
 type addUserPost = ReturnType<typeof addUserPost>
 export const addUserPost = (post: string) => {
@@ -71,6 +77,14 @@ export const setProfileStatus = (status: string) => {
     } as const
 }
 
+type setUserImage = ReturnType<typeof setUserImage>
+export const setUserImage = (images: { small: string | null, large: string | null }) => {
+    return {
+        type: 'SET_USERS_IMAGE',
+        payload: images
+    } as const
+}
+
 export const getProfile = (userId: string): ThunkCreatorType => {
     return (dispatch) => {
         profileAPI.getProfile(userId)
@@ -90,4 +104,8 @@ export const changeProfileStatus = (status: string): ThunkCreatorType => {
         profileAPI.setProfileStatus(status)
             .then(res => { dispatch(setProfileStatus(status)) })
     }
+}
+
+export const uploadUserImage = (image: File): ThunkCreatorType => (dispatch: Dispatch) => {
+    profileAPI.uploadImage(image).then(res => { dispatch(setUserImage(res.data.data.photos)) })
 }

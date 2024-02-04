@@ -32,7 +32,6 @@ const ProfileImage = styled.img`
     border-radius: 10px;
 `
 
-
 export const S = {
     Profile,
     ProfileImage,

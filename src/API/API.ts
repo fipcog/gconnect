@@ -10,7 +10,7 @@ export const appAPI = {
         return instance.get<AuthResponseType>('/auth/me')
     },
     login(email: string, password: string, rememberMe: boolean = false) {
-        return instance.post<ResponseType<{userId: number}>>(`/auth/login`, {email, password, rememberMe})
+        return instance.post<ResponseType<{ userId: number }>>(`/auth/login`, { email, password, rememberMe })
     },
     logout() {
         return instance.delete<ResponseType>(`/auth/login`)
@@ -26,6 +26,15 @@ export const profileAPI = {
     },
     setProfileStatus(status: string) {
         return instance.put<ResponseType>(`/profile/status`, { status })
+    },
+    uploadImage(image: File) {
+        const formData = new FormData()
+        formData.append('image', image)
+        return instance.put<uploadImage>(`/profile/photo`, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            }
+        })
     }
 }
 
@@ -40,6 +49,10 @@ export const usersAPI = {
         return instance.delete(`/follow/${userId}`)
     }
 }
+
+export type uploadImage = ResponseType<{
+    photos: { small: string, large: string }
+}>
 
 export type ResponseProfileType = {
     aboutMe: string | null,
@@ -82,10 +95,10 @@ export type ResponseUsersType = {
     error: string
 }
 
-export type AuthDataType= {
+export type AuthDataType = {
     id: number
-    email: string 
-    login: string 
+    email: string
+    login: string
 }
 
 export type AuthResponseType = {
