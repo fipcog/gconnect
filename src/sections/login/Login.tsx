@@ -19,8 +19,8 @@ const validationSchema = Yup.object().shape({
     password: Yup.string().required('Type your password').min(3, 'Password is too short'),
 })
 
-export const Login: FC<LoginType> = ({onSubmit, isLogged}) => {
-    const {handleSubmit, getFieldProps, touched, errors, resetForm} = useFormik<LoginValues>({
+export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
+    const { handleSubmit, getFieldProps, touched, errors, resetForm } = useFormik<LoginValues>({
         initialValues: {
             email: '',
             password: '',
@@ -34,13 +34,13 @@ export const Login: FC<LoginType> = ({onSubmit, isLogged}) => {
         validationSchema
     })
 
-    return <form  onSubmit={handleSubmit} style={{color: 'black'}}>
-        {isLogged && <Redirect to={'/profile'}/>}
-        <h1 style={{color: 'black'}}>Log in</h1>
+    return <form onSubmit={handleSubmit} style={{ color: 'black' }}>
+        {isLogged && <Redirect to={'/profile'} />}
+        <h1 style={{ color: 'black' }}>Log in</h1>
         <div>
             <p>To log in get registered
                 <a href={'https://social-network.samuraijs.com/'}
-                    target={'_blank'}> here
+                    target={'_blank'} rel="noreferrer"> here
                 </a>
             </p>
             <p>or use common test account credentials:</p>
@@ -49,15 +49,15 @@ export const Login: FC<LoginType> = ({onSubmit, isLogged}) => {
         </div>
         <fieldset>
             <div>
-                <input type={'email'} placeholder="Email" autoComplete="off" {...getFieldProps('email')}/>
+                <input type={'email'} placeholder="Email" autoComplete="off" {...getFieldProps('email')} />
                 {touched.email && errors.email && <span>{errors.email}</span>}
             </div>
             <div>
-                <input type={'password'} placeholder="Password" {...getFieldProps('password')}/>
+                <input type={'password'} placeholder="Password" {...getFieldProps('password')} />
                 {touched.password && errors.password && <span>{errors.password}</span>}
             </div>
             <label>
-                <input type="checkbox" id={'login_form_remember_checkbox'} {...getFieldProps('rememberMe')}/>
+                <input type="checkbox" id={'login_form_remember_checkbox'} {...getFieldProps('rememberMe')} />
                 Remember me
             </label>
             <button type={'submit'} className={'login_btn'}>Login</button>
