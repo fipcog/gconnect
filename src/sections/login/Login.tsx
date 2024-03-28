@@ -34,7 +34,7 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
         validationSchema
     })
 
-    return <form onSubmit={handleSubmit} style={{ color: 'black' }}>
+    return <form onSubmit={handleSubmit}>
         {isLogged && <Redirect to={'/profile'} />}
         <h1 style={{ color: 'black' }}>Log in</h1>
         <div>
@@ -62,5 +62,5 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
             </label>
             <button type={'submit'} className={'login_btn'}>Login</button>
         </fieldset>
-    </form>
+    </form >
 }
