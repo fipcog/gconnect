@@ -11,9 +11,12 @@ const LoginTipContainer = styled.div``
 
 const LoginFieldset = styled.fieldset``
 
+const InputContainer = styled.div``
+
 export const S = {
   LoginForm,
   LoginHeader,
   LoginTipContainer,
   LoginFieldset,
+  InputContainer,
 }
