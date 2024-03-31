@@ -15,11 +15,14 @@ const InputContainer = styled.div``
 
 const LoginInput = styled.input``
 
+const LoginButton = styled.button``
+
 export const S = {
   LoginForm,
   LoginHeader,
   LoginTipContainer,
   LoginFieldset,
   InputContainer,
-  LoginInput
+  LoginInput,
+  LoginButton
 }
