@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Redirect } from "react-router-dom";
-import S from './LoginStyles'
+import { S } from './LoginStyles'
 
 
 export type LoginValues = {
