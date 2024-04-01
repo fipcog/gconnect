@@ -48,7 +48,7 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
             <p><b>Email:</b> free@samuraijs.com</p>
             <p><b>Password:</b> free</p>
         </div>
-        <fieldset>
+        <S.LoginFieldset>
             <div>
                 <input type={'email'} placeholder="Email" autoComplete="off" {...getFieldProps('email')} />
                 {touched.email && errors.email && <span>{errors.email}</span>}
@@ -62,6 +62,6 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
                 Remember me
             </label>
             <S.LoginButton type={'submit'} className={'login_btn'}>Login</S.LoginButton>
-        </fieldset>
+        </S.LoginFieldset>
     </form >
 }
