@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { theme } from './../../style/Theme';
+import { Button } from '../../components/Button';
 
 const LoginForm = styled.div`
   color: ${theme.colors.bodyBgr};
@@ -15,7 +16,7 @@ const InputContainer = styled.div``
 
 const LoginInput = styled.input``
 
-const LoginButton = styled.button``
+const LoginButton = styled(Button)``
 
 export const S = {
   LoginForm,
