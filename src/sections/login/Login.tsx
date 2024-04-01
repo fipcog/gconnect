@@ -49,10 +49,10 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
             <p><b>Password:</b> free</p>
         </div>
         <S.LoginFieldset>
-            <div>
+            <S.InputContainer>
                 <input type={'email'} placeholder="Email" autoComplete="off" {...getFieldProps('email')} />
                 {touched.email && errors.email && <span>{errors.email}</span>}
-            </div>
+            </S.InputContainer>
             <div>
                 <input type={'password'} placeholder="Password" {...getFieldProps('password')} />
                 {touched.password && errors.password && <span>{errors.password}</span>}
