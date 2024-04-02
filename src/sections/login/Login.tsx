@@ -37,7 +37,7 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
 
     return <form onSubmit={handleSubmit}>
         {isLogged && <Redirect to={'/profile'} />}
-        <h1 style={{ color: 'black' }}>Log in</h1>
+        <S.LoginHeader style={{ color: 'black' }}>Log in</S.LoginHeader>
         <div>
             <p>To log in get registered
                 <a href={'https://social-network.samuraijs.com/'}
