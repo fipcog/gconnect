@@ -53,10 +53,10 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
                 <input type={'email'} placeholder="Email" autoComplete="off" {...getFieldProps('email')} />
                 {touched.email && errors.email && <span>{errors.email}</span>}
             </S.InputContainer>
-            <div>
+            <S.InputContainer>
                 <input type={'password'} placeholder="Password" {...getFieldProps('password')} />
                 {touched.password && errors.password && <span>{errors.password}</span>}
-            </div>
+            </S.InputContainer>
             <label>
                 <input type="checkbox" id={'login_form_remember_checkbox'} {...getFieldProps('rememberMe')} />
                 Remember me
