@@ -63,5 +63,5 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
             </label>
             <S.LoginButton type={'submit'} className={'login_btn'}>Login</S.LoginButton>
         </S.LoginFieldset>
-    </ >
+    </form >
 }
