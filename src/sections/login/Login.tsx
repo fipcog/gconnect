@@ -54,7 +54,7 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
                 {touched.email && errors.email && <span>{errors.email}</span>}
             </S.InputContainer>
             <S.InputContainer>
-                <input type={'password'} placeholder="Password" {...getFieldProps('password')} />
+                <S.LoginInput type={'password'} placeholder="Password" {...getFieldProps('password')} />
                 {touched.password && errors.password && <span>{errors.password}</span>}
             </S.InputContainer>
             <label>
