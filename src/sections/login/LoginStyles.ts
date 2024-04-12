@@ -18,6 +18,8 @@ const LoginInput = styled.input``
 
 const LoginButton = styled(Button)``
 
+const LoginLabel = styled.label``
+
 export const S = {
   LoginForm,
   LoginHeader,
@@ -25,5 +27,6 @@ export const S = {
   LoginFieldset,
   InputContainer,
   LoginInput,
-  LoginButton
+  LoginButton,
+  LoginLabel
 }
