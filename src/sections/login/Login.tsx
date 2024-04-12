@@ -58,7 +58,7 @@ export const Login: FC<LoginType> = ({ onSubmit, isLogged }) => {
                 {touched.password && errors.password && <span>{errors.password}</span>}
             </S.InputContainer>
             <label>
-                <input type="checkbox" id={'login_form_remember_checkbox'} {...getFieldProps('rememberMe')} />
+                <S type="checkbox" id={'login_form_remember_checkbox'} {...getFieldProps('rememberMe')} />
                 Remember me
             </label>
             <S.LoginButton type={'submit'} className={'login_btn'}>Login</S.LoginButton>
